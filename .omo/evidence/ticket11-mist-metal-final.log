@@ -1,0 +1,9 @@
+cp "build/CBEFFilmEffects.ofx.bundle/Contents/Resources/CBEFFilmEffects.metallib" "build/tests/CBEFFilmEffects.metallib"
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -DCBEF_ENABLE_METAL_TEST -Isrc/core "tests/m7_performance_benchmark.mm" "build/obj/core/RenderCore.o" "build/obj/metal/MetalRenderBackend.o" "build/obj/metal/FrameArena.o" \
+		-o "build/tests/m7_performance_benchmark" -framework Foundation -framework Metal
+CBEF_M7_EFFECT_FILTER=mist CBEF_M7_OUTPUT_DIR=".omo/evidence/ticket11-mist-metal-final" CBEF_M7_BUNDLE="build/CBEFFilmEffects.ofx.bundle/Contents/MacOS/CBEFFilmEffects.ofx" "build/tests/m7_performance_benchmark"
+m7: begin Mist Diffusion 1920x1080
+m7: begin Mist Diffusion 3840x2160
+m7_performance_benchmark: PASS
+JSON: .omo/evidence/ticket11-mist-metal-final/m7-performance.json
+Markdown: .omo/evidence/ticket11-mist-metal-final/m7-performance.md

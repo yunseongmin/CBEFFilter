@@ -1,0 +1,8 @@
+## Scenario: focused CPU M6 contract
+## Invocation: make -B test-m6-cpu
+UTC: 2026-08-11T19:03:23Z
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/core/RenderCore.cpp" -o "build/obj/core/RenderCore.o"
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core "tests/lens_reflections_render_contract.mm" "build/obj/core/RenderCore.o" -o "build/tests/lens_reflections_render_contract"
+"build/tests/lens_reflections_render_contract"
+lens_reflections_render_contract: PASS (CPU M6 Lens Reflections)
+## exit_code: 0

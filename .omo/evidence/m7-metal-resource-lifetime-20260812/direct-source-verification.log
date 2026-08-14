@@ -1,0 +1,32 @@
+=== verification timestamp ===
+Tue Aug 11 19:21:51 UTC 2026
+=== source ownership audit ===
+1331:class ScopedMTLBuffer {
+1333:    explicit ScopedMTLBuffer(id<MTLBuffer> buffer = nil) : buffer_(buffer) {}
+1334:    ~ScopedMTLBuffer() { [buffer_ release]; }
+1336:    ScopedMTLBuffer(const ScopedMTLBuffer&) = delete;
+1337:    ScopedMTLBuffer& operator=(const ScopedMTLBuffer&) = delete;
+1471:        ScopedMTLBuffer positive([queue.device newBufferWithLength:sample_length options:MTLResourceStorageModeShared]);
+1472:        ScopedMTLBuffer highlighted([queue.device newBufferWithLength:sample_length options:MTLResourceStorageModeShared]);
+1473:        ScopedMTLBuffer horizontal([queue.device newBufferWithLength:sample_length options:MTLResourceStorageModeShared]);
+1474:        ScopedMTLBuffer diffusion([queue.device newBufferWithLength:accumulation_length options:MTLResourceStorageModeShared]);
+1475:        ScopedMTLBuffer bloom([queue.device newBufferWithLength:accumulation_length options:MTLResourceStorageModeShared]);
+1508:            ScopedMTLBuffer horizontal_weight_buffer([queue.device newBufferWithBytes:horizontal_weights.data()
+1511:            ScopedMTLBuffer vertical_weight_buffer([queue.device newBufferWithBytes:vertical_weights.data()
+1582:        ScopedMTLBuffer samples([queue.device newBufferWithLength:sample_length options:MTLResourceStorageModeShared]);
+1583:        ScopedMTLBuffer highlighted([queue.device newBufferWithLength:sample_length options:MTLResourceStorageModeShared]);
+1592:        ScopedMTLBuffer tap_buffer([queue.device newBufferWithBytes:taps.data()
+1667:        ScopedMTLBuffer samples([queue.device newBufferWithLength:sample_length options:MTLResourceStorageModeShared]);
+1668:        ScopedMTLBuffer warped([queue.device newBufferWithLength:sample_length options:MTLResourceStorageModeShared]);
+1669:        ScopedMTLBuffer horizontal([queue.device newBufferWithLength:sample_length options:MTLResourceStorageModeShared]);
+1670:        ScopedMTLBuffer blurred([queue.device newBufferWithLength:sample_length options:MTLResourceStorageModeShared]);
+1671:        ScopedMTLBuffer component([queue.device newBufferWithLength:component_length options:MTLResourceStorageModeShared]);
+1715:        ScopedMTLBuffer horizontal_weight_buffer([queue.device newBufferWithBytes:horizontal_weights.data()
+1718:        ScopedMTLBuffer vertical_weight_buffer([queue.device newBufferWithBytes:vertical_weights.data()
+1794:    ScopedMTLBuffer samples([queue.device newBufferWithLength:sample_length options:MTLResourceStorageModeShared]);
+1795:    ScopedMTLBuffer horizontal([queue.device newBufferWithLength:sample_length options:MTLResourceStorageModeShared]);
+1796:    ScopedMTLBuffer halo([queue.device newBufferWithLength:halo_count * sizeof(float) * 4U
+1830:        ScopedMTLBuffer horizontal_weight_buffer([queue.device newBufferWithBytes:horizontal_weights.data()
+1833:        ScopedMTLBuffer vertical_weight_buffer([queue.device newBufferWithBytes:vertical_weights.data()
+=== raw owning allocation audit ===
+PASS: all source allocations use ScopedMTLBuffer

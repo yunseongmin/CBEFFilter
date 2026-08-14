@@ -1,0 +1,8 @@
+test_checked_in_manifest_matches_generated_assets (tests.quality_fixture_test.QualityFixtureTest.test_checked_in_manifest_matches_generated_assets) ... ok
+test_reproducible_scene_linear_suite_and_provenance (tests.quality_fixture_test.QualityFixtureTest.test_reproducible_scene_linear_suite_and_provenance) ... ok
+test_top_level_render_contract_comparison (tests.quality_fixture_test.QualityFixtureTest.test_top_level_render_contract_comparison) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.489s
+
+OK

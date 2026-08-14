@@ -1,0 +1,50 @@
+--- timestamp ---
+2026-08-12T06:23:43Z
+--- Metal profile field audit ---
+src/metal/MetalRenderBackend.mm:200:struct MistArguments {
+src/metal/MetalRenderBackend.mm:227:static_assert(sizeof(MistArguments) == 96U, "Metal Mist argument layout must stay stable");
+src/metal/MetalRenderBackend.mm:230:    MistArguments base;
+src/metal/MetalRenderBackend.mm:830:        const MistArguments base = {
+src/metal/MetalRenderBackend.mm:842:            plan.mist.mode,
+src/metal/MetalRenderBackend.mm:843:            plan.mist.density,
+src/metal/MetalRenderBackend.mm:844:            plan.mist.diffusion,
+src/metal/MetalRenderBackend.mm:845:            plan.mist.bloom,
+src/metal/MetalRenderBackend.mm:846:            plan.mist.contrast,
+src/metal/MetalRenderBackend.mm:847:            plan.mist.texture,
+src/metal/MetalRenderBackend.mm:900:                    const float radius_factor = std::array<float, 4>{0.80F, 0.95F, 1.10F, 1.25F}[static_cast<std::size_t>(std::clamp(plan.mist.density, 0, 3))];
+src/metal/MetalRenderBackend.mm:901:                    const float mode_radius = plan.mist.mode == 0 ? 1.0F : 1.25F;
+src/metal/MetalRenderBackend.mm:902:                    const float radius = height_scale * ((0.10F + 1.40F * plan.mist.diffusion / 100.0F) / 100.0F) * radius_factor * mode_radius;
+src/metal/MetalRenderBackend.mm:1001:        MistArguments arguments = base;
+src/metal/MetalRenderBackend.mm:1023:            static_cast<std::size_t>(std::clamp(plan.mist.density, 0, 3))];
+src/metal/MetalRenderBackend.mm:1024:        const float mode_radius = plan.mist.mode == 0 ? 1.0F : 1.25F;
+src/metal/MetalRenderBackend.mm:1025:        const float radius = height_scale * ((0.10F + 1.40F * plan.mist.diffusion / 100.0F) / 100.0F) *
+src/metal/kernels/CBEFFilmEffects.metal:152:struct MistArguments {
+src/metal/kernels/CBEFFilmEffects.metal:180:    MistArguments base;
+src/metal/kernels/CBEFFilmEffects.metal:646:                           constant MistArguments& arguments [[buffer(2)]],
+src/metal/kernels/CBEFFilmEffects.metal:669:                              device float4* highlighted [[buffer(2)]], constant MistArguments& arguments [[buffer(3)]],
+src/metal/kernels/CBEFFilmEffects.metal:695:                                 const device float* weights [[buffer(2)]], constant MistArguments& arguments [[buffer(3)]],
+src/metal/kernels/CBEFFilmEffects.metal:713:                                         constant MistArguments& arguments [[buffer(2)]],
+src/metal/kernels/CBEFFilmEffects.metal:734:                               const device float* weights [[buffer(2)]], constant MistArguments& arguments [[buffer(3)]],
+src/metal/kernels/CBEFFilmEffects.metal:758:                                       constant MistArguments& arguments [[buffer(2)]],
+src/metal/kernels/CBEFFilmEffects.metal:788:    const MistArguments base = arguments.base;
+src/metal/kernels/CBEFFilmEffects.metal:812:    const MistArguments base = arguments.base;
+src/metal/kernels/CBEFFilmEffects.metal:844:    const MistArguments base = arguments.base;
+src/metal/kernels/CBEFFilmEffects.metal:908:                               const device float4* bloom [[buffer(4)]], constant MistArguments& arguments [[buffer(5)]],
+--- focused CPU ---
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/core/RenderCore.cpp" -o "build/obj/core/RenderCore.o"
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core "tests/mist_v2_cpu_contract.cpp" "build/obj/core/RenderCore.o" -o "build/tests/mist_v2_cpu_contract"
+"build/tests/mist_v2_cpu_contract"
+mist_v2_cpu_contract: PASS (CPU reference only; Metal parity is ticket 11)
+--- M4 parity ---
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/core/RenderCore.cpp" -o "build/obj/core/RenderCore.o"
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/metal/MetalRenderBackend.mm" -o "build/obj/metal/MetalRenderBackend.o"
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/metal/FrameArena.mm" -o "build/obj/metal/FrameArena.o"
+xcrun -sdk macosx metal -c "src/metal/kernels/CBEFFilmEffects.metal" -o "build/obj/metal/CBEFFilmEffects.air"
+xcrun -sdk macosx metallib "build/obj/metal/CBEFFilmEffects.air" -o "build/CBEFFilmEffects.ofx.bundle/Contents/Resources/CBEFFilmEffects.metallib"
+cp "build/CBEFFilmEffects.ofx.bundle/Contents/Resources/CBEFFilmEffects.metallib" "build/tests/CBEFFilmEffects.metallib"
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -DCBEF_ENABLE_METAL_TEST -Isrc/core "tests/mist_render_contract.mm" "build/obj/core/RenderCore.o" "build/obj/metal/MetalRenderBackend.o" "build/obj/metal/FrameArena.o" \
+		-o "build/tests/mist_render_contract" -framework Foundation -framework Metal
+"build/tests/mist_render_contract"
+mist_render_contract: CPU and Metal Mist must agree within 2e-4
+make: *** [test-m4-cpu] Error 1
+m4_exit=2

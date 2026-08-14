@@ -1,0 +1,102 @@
+{
+  "crop": [
+    0,
+    0,
+    192,
+    128
+  ],
+  "fixture_id": "grain-response-grid",
+  "regions": [
+    {
+      "exposure_stops": -4.0,
+      "height": 42,
+      "id": "exposure-0-record-0",
+      "record": "neutral",
+      "shape": "rect",
+      "width": 64,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "exposure_stops": -4.0,
+      "height": 42,
+      "id": "exposure-0-record-1",
+      "record": "red",
+      "shape": "rect",
+      "width": 64,
+      "x": 64,
+      "y": 0
+    },
+    {
+      "exposure_stops": -4.0,
+      "height": 42,
+      "id": "exposure-0-record-2",
+      "record": "green",
+      "shape": "rect",
+      "width": 64,
+      "x": 128,
+      "y": 0
+    },
+    {
+      "exposure_stops": 0.0,
+      "height": 42,
+      "id": "exposure-1-record-0",
+      "record": "neutral",
+      "shape": "rect",
+      "width": 64,
+      "x": 0,
+      "y": 42
+    },
+    {
+      "exposure_stops": 0.0,
+      "height": 42,
+      "id": "exposure-1-record-1",
+      "record": "red",
+      "shape": "rect",
+      "width": 64,
+      "x": 64,
+      "y": 42
+    },
+    {
+      "exposure_stops": 0.0,
+      "height": 42,
+      "id": "exposure-1-record-2",
+      "record": "green",
+      "shape": "rect",
+      "width": 64,
+      "x": 128,
+      "y": 42
+    },
+    {
+      "exposure_stops": 4.0,
+      "height": 42,
+      "id": "exposure-2-record-0",
+      "record": "neutral",
+      "shape": "rect",
+      "width": 64,
+      "x": 0,
+      "y": 85
+    },
+    {
+      "exposure_stops": 4.0,
+      "height": 42,
+      "id": "exposure-2-record-1",
+      "record": "red",
+      "shape": "rect",
+      "width": 64,
+      "x": 64,
+      "y": 85
+    },
+    {
+      "exposure_stops": 4.0,
+      "height": 42,
+      "id": "exposure-2-record-2",
+      "record": "green",
+      "shape": "rect",
+      "width": 64,
+      "x": 128,
+      "y": 85
+    }
+  ],
+  "schema_version": "1.0"
+}

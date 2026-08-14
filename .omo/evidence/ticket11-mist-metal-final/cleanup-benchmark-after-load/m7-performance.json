@@ -1,0 +1,15 @@
+{
+  "schema_version": 2,
+  "generated_at_utc": "2026-08-12T07:06:27Z",
+  "os": "26.5.2",
+  "gpu": "Apple M3 Pro",
+  "power_thermal_gpu_load": "unavailable",
+  "bundle_path": "build/CBEFFilmEffects.ofx.bundle/Contents/MacOS/CBEFFilmEffects.ofx",
+  "bundle_hash_sha256": "e86af1c4a9d5207f19ca379c8ae4c92c27cf64e0cd33242ce30cb96914de3c5d",
+  "thresholds": {"1080p_ms": 41.67, "4k_ms": 83.33, "grain_4k_ms": 41.67, "temporary_bytes": 1073741824, "steady_delta_bytes": 8388608, "halation_scratch_bytes": 167772160, "mist_scratch_bytes": 230686720},
+  "cases": [
+    {"effect": "mist_diffusion", "width": 1920, "height": 1080, "samples_ms": [22.5890, 22.2493, 22.1740, 22.2435, 22.1280, 23.5893, 23.0024, 22.8448, 21.9889, 23.2672], "frame_times": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "median_ms": 22.4191, "average_ms": 22.6076, "initial_baseline_bytes": 66994176, "baseline_bytes": 92798976, "warmup_baseline_bytes": 92798976, "peak_bytes": 92798976, "steady_bytes": 92798976, "temporary_peak_bytes": 25804800, "steady_delta_bytes": 0, "scratch_requested_peak": 25804800, "scratch_reserved_peak": 25804800, "arena_growth_after_warmup": 0, "threshold_ms": 41.6700, "timing_pass": true, "temporary_pass": true, "steady_pass": true, "pass": true},
+    {"effect": "mist_diffusion", "width": 3840, "height": 2160, "samples_ms": [174.0198, 172.8294, 169.9023, 174.6572, 168.9835, 165.5731, 173.3614, 165.0409, 169.1557, 185.2798], "frame_times": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "median_ms": 171.3659, "average_ms": 171.8803, "initial_baseline_bytes": 291995648, "baseline_bytes": 395214848, "warmup_baseline_bytes": 395214848, "peak_bytes": 395214848, "steady_bytes": 395214848, "temporary_peak_bytes": 103219200, "steady_delta_bytes": 0, "scratch_requested_peak": 103219200, "scratch_reserved_peak": 103219200, "arena_growth_after_warmup": 0, "threshold_ms": 83.3300, "timing_pass": false, "temporary_pass": true, "steady_pass": true, "pass": false}
+  ],
+  "all_pass": false
+}

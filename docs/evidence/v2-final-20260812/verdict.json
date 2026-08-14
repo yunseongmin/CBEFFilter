@@ -1,0 +1,1 @@
+{"schema_version":1,"status":"passed","plugin_version":"2.0.0","effect_count":5,"warmup_frames":3,"measurement_frames":10,"grain_statistical_frames":48,"scratch_limits_mib":{"halation":160,"grain":64,"mist":220,"optical":192,"lens":256}}

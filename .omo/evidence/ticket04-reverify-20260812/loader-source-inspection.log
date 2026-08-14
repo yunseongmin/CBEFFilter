@@ -1,0 +1,18 @@
+scenario=loader-and-cache-source-inspection
+266:NSString* shaderLibraryPath()
+277:    if (dladdr(reinterpret_cast<const void*>(&shaderLibraryPath), &image_info) == 0 ||
+318:        NSString* library_path = shaderLibraryPath();
+324:        library = [device newLibraryWithURL:library_url error:&error];
+328:        libraries.emplace(static_cast<void*>(device), library);
+338:        pipelines.emplace(key, pipeline);
+609:            if (pipeline == nil) return failed(Error::PipelineCreationFailed);
+696:        if (generate == nil || blur == nil || final == nil) return failed(Error::PipelineCreationFailed);
+772:            if (copy == nil) return failed(Error::PipelineCreationFailed);
+911:            return failed(Error::PipelineCreationFailed);
+1029:            if (copy == nil) return failed(Error::PipelineCreationFailed);
+1059:        if (prepare == nil || render_pipeline == nil) return failed(Error::PipelineCreationFailed);
+1119:            if (copy == nil) return failed(Error::PipelineCreationFailed);
+1146:            return failed(Error::PipelineCreationFailed);
+1223:        if (pipeline == nil) return failed(Error::PipelineCreationFailed);
+1351:        return failed(Error::PipelineCreationFailed);
+result=PASS

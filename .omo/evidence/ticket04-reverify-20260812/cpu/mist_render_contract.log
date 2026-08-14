@@ -1,0 +1,7 @@
+scenario=mist_render_contract-cpu-build-and-run
+build_exit=0
+mist_render_contract: PASS
+run_exit=0
+scenario=mist_render_contract-cpu-run-retry
+mist_render_contract: PASS
+run_exit=0

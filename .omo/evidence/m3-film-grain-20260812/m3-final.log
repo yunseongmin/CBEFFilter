@@ -1,0 +1,4 @@
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -DCBEF_ENABLE_METAL_TEST -Isrc/core "tests/film_grain_render_contract.mm" "build/obj/core/RenderCore.o" "build/obj/metal/MetalRenderBackend.o" \
+		-o "build/tests/film_grain_render_contract" -framework Foundation -framework Metal
+"build/tests/film_grain_render_contract"
+film_grain_render_contract: PASS

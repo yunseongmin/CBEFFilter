@@ -1,0 +1,3 @@
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core "tests/mist_v2_cpu_contract.cpp" "build/obj/core/RenderCore.o" -o "build/tests/mist_v2_cpu_contract"
+"build/tests/mist_v2_cpu_contract"
+mist_v2_cpu_contract: PASS (CPU reference only; Metal parity is ticket 11)

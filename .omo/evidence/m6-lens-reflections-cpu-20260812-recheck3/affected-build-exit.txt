@@ -1,0 +1,2 @@
+command=make -B build
+exit_code=0

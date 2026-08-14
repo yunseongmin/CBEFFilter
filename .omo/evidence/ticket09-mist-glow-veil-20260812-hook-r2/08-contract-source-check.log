@@ -1,0 +1,34 @@
+src/core/RenderCore.cpp:193:    const auto markBasic = [&parameters](const char* id, int order,
+src/core/RenderCore.cpp:262:        markBasic("mode", 20, ParameterRole::Quality);
+src/core/RenderCore.cpp:263:        markBasic("density", 30, ParameterRole::Quality);
+src/core/RenderCore.cpp:275:        {"Final", "Halation Only", "Source Mask", "Local Only", "Global Only"},
+src/core/RenderCore.cpp:473:        {"Final", "Mist Diffusion Component", "Mist Highlight Matte", "Glow Only", "Veil Only", "Source Mask"},
+src/core/RenderCore.cpp:474:        {"Generic Black 1/8", "Generic Black 1/4", "Generic Black 1/2", "Generic Black 1",
+src/core/RenderCore.cpp:475:         "Generic White 1/8", "Generic White 1/4", "Generic White 1/2", "Generic White 1"});
+src/core/RenderCore.cpp:477:                           choiceParameter("mode", "Filter Family", {"Generic Black", "Generic White"}, 0),
+src/core/RenderCore.cpp:500:                            "Trademark-free Generic Black and Generic White glow and veil profiles; no measured filter calibration is claimed.",
+src/core/RenderCore.cpp:502:                            {black("black_1_8", "Generic Black 1/8", 0, 18.0, 12.0, 8.0, 90.0),
+src/core/RenderCore.cpp:503:                             black("black_1_4", "Generic Black 1/4", 1, 28.0, 18.0, 12.0, 85.0),
+src/core/RenderCore.cpp:504:                             black("black_1_2", "Generic Black 1/2", 2, 42.0, 28.0, 18.0, 78.0),
+src/core/RenderCore.cpp:505:                             black("black_1", "Generic Black 1", 3, 60.0, 42.0, 26.0, 68.0),
+src/core/RenderCore.cpp:506:                             white("white_1_8", "Generic White 1/8", 0, 22.0, 20.0, 18.0, 82.0),
+src/core/RenderCore.cpp:507:                             white("white_1_4", "Generic White 1/4", 1, 35.0, 32.0, 28.0, 75.0),
+src/core/RenderCore.cpp:508:                             white("white_1_2", "Generic White 1/2", 2, 50.0, 48.0, 40.0, 65.0),
+src/core/RenderCore.cpp:509:                             white("white_1", "Generic White 1", 3, 70.0, 65.0, 55.0, 55.0)},
+tests/mist_v2_cpu_contract.cpp:212:              std::strcmp(family->choices[0], "Generic Black") == 0 &&
+tests/mist_v2_cpu_contract.cpp:213:              std::strcmp(family->choices[1], "Generic White") == 0,
+tests/mist_v2_cpu_contract.cpp:214:          "Mist Filter Family must use Generic Black and Generic White");
+tests/mist_v2_cpu_contract.cpp:218:    CHECK(output->choices.size() >= 6U && std::strcmp(output->choices[3], "Glow Only") == 0 &&
+tests/mist_v2_cpu_contract.cpp:219:              std::strcmp(output->choices[4], "Veil Only") == 0 &&
+tests/mist_v2_cpu_contract.cpp:220:              std::strcmp(output->choices[5], "Source Mask") == 0,
+tests/mist_v2_cpu_contract.cpp:221:          "Mist diagnostics must expose Glow Only, Veil Only, and Source Mask");
+tests/mist_v2_cpu_contract.cpp:240:    CHECK(setChoice(settings, "output_view", 3) && render(glow, settings), "Glow Only must render through public CPU contract");
+tests/mist_v2_cpu_contract.cpp:242:    CHECK(setChoice(settings, "output_view", 4) && render(veil, settings), "Veil Only must render through public CPU contract");
+tests/mist_v2_cpu_contract.cpp:244:    CHECK(setChoice(settings, "output_view", 5) && render(mask, settings), "Source Mask must render through public CPU contract");
+tests/mist_v2_cpu_contract.cpp:253:          "Source Mask must isolate the highlight without filling the dark field");
+tests/mist_v2_cpu_contract.cpp:263:                      "Glow Only plus Veil Only must reconstruct Final contribution with Detail neutralized");
+tests/mist_v2_cpu_contract.cpp:327:          "same-Grade Generic Black and Generic White Veil fixtures must render");
+tests/mist_v2_cpu_contract.cpp:330:          "Generic White must have broader, higher-energy Veil at the same internal Grade");
+tests/mist_v2_cpu_contract.cpp:349:          "Generic Black must retain the low-frequency dark patch more strongly than Generic White");
+tests/mist_v2_cpu_contract.cpp:374:          "strong Generic White safety settings must be accepted");
+tests/mist_v2_cpu_contract.cpp:401:          "neutral Glow Only fixture must render");

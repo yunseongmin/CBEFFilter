@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-08-11T19:32:28Z",
+  "os": "26.5.2",
+  "gpu": "Apple M3 Pro",
+  "bundle_path": ".omo/evidence/m7-performance-20260812/negative-run-2/missing.ofx",
+  "bundle_hash_sha256": "missing",
+  "thresholds": {"1080p_ms": 41.67, "4k_ms": 83.33, "grain_4k_ms": 41.67, "temporary_bytes": 1073741824, "steady_delta_bytes": 8388608},
+  "cases": [
+  ],
+  "all_pass": false,
+  "error": "bundle binary is missing; build the bundle before running M7 benchmark"
+}

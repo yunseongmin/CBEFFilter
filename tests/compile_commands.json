@@ -1,0 +1,17 @@
+[
+  {
+    "directory": "/Users/younseongmin/Documents/CBEF/CBEFFilter",
+    "arguments": [
+      "xcrun",
+      "clang++",
+      "-std=c++17",
+      "-arch",
+      "arm64",
+      "-I/Library/Application Support/Blackmagic Design/DaVinci Resolve/Developer/OpenFX/OpenFX-1.4/include",
+      "-I/Library/Application Support/Blackmagic Design/DaVinci Resolve/Developer/OpenFX/Support/include",
+      "-c",
+      "tests/plugin_abi_probe.cpp"
+    ],
+    "file": "/Users/younseongmin/Documents/CBEF/CBEFFilter/tests/plugin_abi_probe.cpp"
+  }
+]

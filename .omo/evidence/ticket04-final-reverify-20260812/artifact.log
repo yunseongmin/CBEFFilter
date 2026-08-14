@@ -1,0 +1,6 @@
+scenario=bundle-artifact
+build/CBEFFilmEffects.ofx.bundle/Contents/Resources/CBEFFilmEffects.metallib: MetalLib executable (MacOS), version 1.2.9
+bundle_metallib_bytes=237249
+test_metallib_bytes=237249
+8afe407f2d604ec34411c55cb43e0a4370b908cbcd5e778dc883f429f077f705  build/CBEFFilmEffects.ofx.bundle/Contents/Resources/CBEFFilmEffects.metallib
+8afe407f2d604ec34411c55cb43e0a4370b908cbcd5e778dc883f429f077f705  build/tests/CBEFFilmEffects.metallib

@@ -1,0 +1,16 @@
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/core/RenderCore.cpp" -o "build/obj/core/RenderCore.o"
+src/core/RenderCore.cpp:1404:71: error: no viable conversion from 'const detail::MistParameters' to 'float'
+ 1404 |                                   gain, is_identity, halation, grain, mist};
+      |                                                                       ^~~~
+src/core/RenderCore.cpp:1404:75: warning: missing field 'blades' initializer [-Wmissing-field-initializers]
+ 1404 |                                   gain, is_identity, halation, grain, mist};
+      |                                                                           ^
+src/core/RenderCore.cpp:1404:71: warning: suggest braces around initialization of subobject [-Wmissing-braces]
+ 1404 |                                   gain, is_identity, halation, grain, mist};
+      |                                                                       ^~~~
+      |                                                                       {   }
+src/core/RenderCore.cpp:1404:75: warning: missing field 'mist' initializer [-Wmissing-field-initializers]
+ 1404 |                                   gain, is_identity, halation, grain, mist};
+      |                                                                           ^
+3 warnings and 1 error generated.
+make: *** [build/obj/core/RenderCore.o] Error 1

@@ -1,0 +1,2 @@
+tests_m1_m6_rerun=PASS
+    2514 .omo/evidence/m7-metal-resource-lifetime-20260812/final-tests-rerun.log

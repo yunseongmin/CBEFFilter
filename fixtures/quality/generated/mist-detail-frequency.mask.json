@@ -1,0 +1,56 @@
+{
+  "crop": [
+    0,
+    0,
+    192,
+    128
+  ],
+  "fixture_id": "mist-detail-frequency",
+  "regions": [
+    {
+      "height": 56,
+      "id": "skin-fine",
+      "period": 2,
+      "shape": "checker",
+      "width": 60,
+      "x": 12,
+      "y": 16
+    },
+    {
+      "angle": 0.17,
+      "height": 58,
+      "id": "eye-edge",
+      "shape": "slanted-edge",
+      "width": 1,
+      "x": 100,
+      "y": 10
+    },
+    {
+      "height": 48,
+      "id": "hair",
+      "shape": "line-stack",
+      "spacing": 8,
+      "width": 68,
+      "x": 116,
+      "y": 10
+    },
+    {
+      "height": 44,
+      "id": "fabric",
+      "period": 5,
+      "shape": "woven-grid",
+      "width": 96,
+      "x": 12,
+      "y": 88
+    },
+    {
+      "cx": 216,
+      "cy": 108,
+      "id": "flare",
+      "radius": 1,
+      "shape": "point-source",
+      "value": 8.0
+    }
+  ],
+  "schema_version": "1.0"
+}

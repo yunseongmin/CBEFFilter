@@ -1,0 +1,4 @@
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core "tests/optical_blur_render_contract.mm" "build/obj/core/RenderCore.o" "build/obj/metal/MetalRenderBackend.o" \
+		-o "build/tests/optical_blur_render_contract" -framework Foundation -framework Metal
+"build/tests/optical_blur_render_contract"
+optical_blur_render_contract: PASS

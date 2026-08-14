@@ -1,0 +1,4 @@
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/core/RenderCore.cpp" -o "build/obj/core/RenderCore.o"
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/metal/MetalRenderBackend.mm" -o "build/obj/metal/MetalRenderBackend.o"
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -DCBEF_ENABLE_METAL_TEST -Isrc/core "tests/m7_performance_benchmark.mm" "build/obj/core/RenderCore.o" "build/obj/metal/MetalRenderBackend.o" \
+		-o "build/tests/m7_performance_benchmark" -framework Foundation -framework Metal

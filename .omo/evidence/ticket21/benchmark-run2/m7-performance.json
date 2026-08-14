@@ -1,0 +1,15 @@
+{
+  "schema_version": 2,
+  "generated_at_utc": "2026-08-12T09:44:52Z",
+  "os": "26.5.2",
+  "gpu": "Apple M3 Pro",
+  "power_thermal_gpu_load": "unavailable",
+  "bundle_path": "build/CBEFFilmEffects.ofx.bundle/Contents/MacOS/CBEFFilmEffects.ofx",
+  "bundle_hash_sha256": "a098169aebfab609378c583aff76bc99ce8a6bba03033c15fd408914ccfc3d52",
+  "thresholds": {"1080p_ms": 41.67, "4k_ms": 83.33, "grain_4k_ms": 41.67, "temporary_bytes": 1073741824, "steady_delta_bytes": 8388608, "halation_scratch_bytes": 167772160, "mist_scratch_bytes": 230686720, "grain_scratch_bytes": 67108864, "optical_scratch_bytes": 201326592, "lens_scratch_bytes": 268435456},
+  "cases": [
+    {"effect": "lens_reflections", "width": 1920, "height": 1080, "samples_ms": [], "frame_times": [], "median_ms": 0.0000, "average_ms": 0.0000, "initial_baseline_bytes": 66994176, "baseline_bytes": 66994176, "warmup_baseline_bytes": 0, "peak_bytes": 93978624, "steady_bytes": 0, "temporary_peak_bytes": 0, "steady_delta_bytes": 0, "scratch_requested_peak": 0, "scratch_reserved_peak": 0, "arena_growth_after_warmup": 0, "threshold_ms": 41.6700, "timing_pass": false, "temporary_pass": false, "steady_pass": false, "pass": false}
+  ],
+  "all_pass": false,
+  "error": "Lens Reflections 1920x1080: Metal output was non-finite or unchanged at sampled pixels"
+}

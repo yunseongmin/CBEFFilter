@@ -1,0 +1,2 @@
+plugin_abi_probe: bundle is missing the precompiled CBEF Metal library
+run_exit=1

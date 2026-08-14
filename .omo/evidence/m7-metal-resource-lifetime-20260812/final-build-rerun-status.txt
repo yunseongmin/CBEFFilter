@@ -1,0 +1,2 @@
+build_rerun=PASS
+    3482 .omo/evidence/m7-metal-resource-lifetime-20260812/final-build-rerun.log

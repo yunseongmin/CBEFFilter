@@ -1,0 +1,11 @@
+ticket10 CPU implementation evidence
+
+focused: make -B test-v2-mist-cpu -> PASS
+typed: make -B test-v2-compile -> PASS
+inspector: make -B test-v2-inspector -> PASS
+build: make -B build -> PASS
+fixture generator: python3 fixtures/quality/generate_fixtures.py -> generated 9 fixtures
+fixture contract: python3 tests/quality_fixture_test.py -> 3 tests PASS
+fixture provenance: mist-detail-frequency metrics all measured_profile_gate=false
+ABI: make -B test -> plugin_abi_probe PASS
+legacy M4 CPU/reference: build and CPU portions valid; combined test reaches Metal parity and fails at the pre-existing ticket11-owned CPU/Metal comparison after the v2 profile change

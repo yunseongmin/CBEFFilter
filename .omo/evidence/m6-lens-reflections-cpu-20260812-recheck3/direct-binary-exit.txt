@@ -1,0 +1,2 @@
+command=build/tests/lens_reflections_render_contract
+exit_code=0

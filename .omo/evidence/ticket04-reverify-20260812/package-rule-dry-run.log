@@ -1,0 +1,4 @@
+scenario=package-rule-dry-run
+xcrun -sdk macosx metal -c "src/metal/kernels/CBEFFilmEffects.metal" -o "build/obj/metal/CBEFFilmEffects.air"
+xcrun -sdk macosx metallib "build/obj/metal/CBEFFilmEffects.air" -o "build/CBEFFilmEffects.ofx.bundle/Contents/Resources/CBEFFilmEffects.metallib"
+result=PASS

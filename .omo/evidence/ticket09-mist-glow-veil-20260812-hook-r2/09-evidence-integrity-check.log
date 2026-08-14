@@ -1,0 +1,5 @@
+COMMAND: test -s verification.md; count all .exit files containing EXIT: 0
+verification_md_nonempty=1
+artifact_log_nonempty=1
+exit_zero_count=8
+EXIT: 0

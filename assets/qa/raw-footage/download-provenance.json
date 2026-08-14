@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-08-12T12:08:05Z",
+  "purpose": "Local internal visual QA with official Blackmagic camera-original BRAW samples",
+  "landing_url": "https://www.blackmagicdesign.com/products/blackmagicursaminipro/gallery",
+  "source_policy": {
+    "official_hosts_only": true,
+    "allowed_hosts": [
+      "www.blackmagicdesign.com",
+      "downloads.blackmagicdesign.com"
+    ],
+    "license_limitation": "Internal QA only. Do not redistribute the archives, extracted camera originals, sidecars, stills, or derivative exports. Blackmagic Design and the credited creators retain all rights. The gallery's copyright/privacy modal is the authoritative source for any permitted use beyond this internal QA evidence set."
+  },
+  "validation_method": {
+    "archive": "HTTP Content-Type and Content-Length checked before download; local file(1) classification; unzip -t integrity test",
+    "braw": "Exact uncompressed size matched ZIP central directory; ISO-BMFF-style wide/mdat header present; embedded Blackmagic/BRAW metadata strings present",
+    "hash_algorithm": "SHA-256"
+  },
+  "assets": [
+    {
+      "scene": "Boy and the watch",
+      "camera": "Blackmagic URSA Mini Pro 12K",
+      "gallery_codec": "Blackmagic RAW Constant Bitrate 12:1",
+      "credited_creator": "Matteo Bertoli",
+      "direct_url": "https://downloads.blackmagicdesign.com/products/blackmagicursaminipro12k/raw/dana-point/20221012-11fdfd/Boy-and-the-Watch.braw.zip",
+      "retrieved_at_utc": "2026-08-12T12:07:28Z",
+      "archive": {
+        "path": null,
+        "preserved": false,
+        "http_content_type": "application/zip",
+        "http_content_length": 250882271,
+        "bytes": 250882271,
+        "sha256": "e1352a0180145f5f7110378575ba3024ac79f8ecc8443582d6206b11635bcb31",
+        "zip_integrity": "passed"
+      },
+      "camera_original": {
+        "path": null,
+        "preserved": false,
+        "bytes": 260257611,
+        "sha256": "a175d2dfcd6cae3871d6ff742a18a8360496e997bcac16980a5dadf9b2ea54d5",
+        "validation": "passed"
+      }
+    },
+    {
+      "scene": "Early Morning",
+      "camera": "Blackmagic URSA Mini Pro 12K",
+      "gallery_codec": "Blackmagic RAW Constant Bitrate 8:1",
+      "credited_creator": "Matteo Bertoli",
+      "direct_url": "https://downloads.blackmagicdesign.com/products/blackmagicursaminipro12k/raw/dana-point/20221012-11fdfd/Early-morning.braw.zip",
+      "retrieved_at_utc": "2026-08-12T12:07:27Z",
+      "archive": {
+        "path": null,
+        "preserved": false,
+        "http_content_type": "application/zip",
+        "http_content_length": 316355393,
+        "bytes": 316355393,
+        "sha256": "1dd26e61ca54c84d1e9239a56b64bb2884379828e5296bedf686e4118e77de30",
+        "zip_integrity": "passed"
+      },
+      "camera_original": {
+        "path": null,
+        "preserved": false,
+        "bytes": 327834423,
+        "sha256": "1d41d786de812e500856e26add3fd93ce7a0b6067595d0d3453febd17f520a0a",
+        "validation": "passed"
+      }
+    },
+    {
+      "scene": "Wetsuit",
+      "camera": "Blackmagic URSA Mini Pro 12K",
+      "gallery_codec": "Blackmagic RAW Constant Bitrate 18:1",
+      "credited_creator": "Matteo Bertoli",
+      "direct_url": "https://downloads.blackmagicdesign.com/products/blackmagicursaminipro12k/raw/dana-point/20221012-11fdfd/Wetsuit.braw.zip",
+      "retrieved_at_utc": "2026-08-12T12:07:19Z",
+      "archive": {
+        "path": null,
+        "preserved": false,
+        "http_content_type": "application/zip",
+        "http_content_length": 142749268,
+        "bytes": 142749268,
+        "sha256": "d6877db66ef3f3867375621f5e0e702d46fe1b5cecf1fd59767c2b13168c15d8",
+        "zip_integrity": "passed"
+      },
+      "camera_original": {
+        "path": null,
+        "preserved": false,
+        "bytes": 154352540,
+        "sha256": "2e402227ea3923e23dfa094dc836ea51f212ded15907897a94961d0555de98fa",
+        "validation": "passed"
+      }
+    },
+    {
+      "scene": "The Fighter — Punching in the ring",
+      "camera": "Blackmagic URSA Mini Pro 4.6K G2",
+      "gallery_codec": "Blackmagic RAW Constant Bitrate 3:1 / 8:1",
+      "credited_creator": "Vance Burberry",
+      "direct_url": "https://downloads.blackmagicdesign.com/products/blackmagicursaminiprog2/originals/the-fighter/Punching-in-the-ring.zip",
+      "retrieved_at_utc": "2026-08-12T12:07:26Z",
+      "archive": {
+        "path": null,
+        "preserved": false,
+        "http_content_type": "application/zip",
+        "http_content_length": 254489709,
+        "bytes": 254489709,
+        "sha256": "a84a05e76de575bac72fc9b60604ac318a07eaa81b2bd76ebfb30c7284c4d821",
+        "zip_integrity": "passed"
+      },
+      "camera_original": {
+        "path": null,
+        "preserved": false,
+        "bytes": 255281708,
+        "sha256": "a61761c2583c13276c33777da799d1806b240283b8547967894f75a60c30b637",
+        "validation": "passed"
+      },
+      "sidecar": {
+        "path": null,
+        "preserved": false,
+        "bytes": 630,
+        "sha256": "f12ed65ad6f6b424853e5c6c16b2f2e5ddfcf4fbbaead14015fce5ca76162906"
+      }
+    }
+  ],
+  "preexisting_fifth_scene": {
+    "path": null,
+    "preserved": false,
+    "bytes": 594261948,
+    "sha256": "93672c8e2218aca8db5eb24e79e13271030021d62045ce124d8467d93ae86b54",
+    "note": "Pre-existing workspace asset; not downloaded or overwritten by this task. Combined with the four verified additions, the local QA set now has five real BRAW scenes."
+  },
+  "summary": {
+    "new_verified_braw_count": 4,
+    "real_scene_count_including_preexisting": 5,
+    "all_new_archives_under_400_mb": true,
+    "all_new_sources_official_blackmagic_hosts": true,
+    "download_archives_removed_after_extraction": true,
+    "local_camera_originals_removed_after_qa": true
+  }
+}

@@ -1,0 +1,2 @@
+v2 optical parity max=0.00000238 mean=0.00000007
+optical_blur_render_contract: PASS (CPU + Metal M5 Optical Blur)

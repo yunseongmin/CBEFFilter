@@ -1,0 +1,16 @@
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/core/RenderCore.cpp" -o "build/obj/core/RenderCore.o"
+src/core/RenderCore.cpp:673:25: warning: unused function 'opticalKernel' [-Wunused-function]
+  673 | std::vector<OpticalTap> opticalKernel(float radius_y, const detail::OpticalBlurParameters& parameters)
+      |                         ^~~~~~~~~~~~~
+src/core/RenderCore.cpp:718:15: warning: unused function 'opticalConvolve' [-Wunused-function]
+  718 | OpticalSample opticalConvolve(const std::vector<OpticalSample>& source, const DataWindow& bounds, int x, int y,
+      |               ^~~~~~~~~~~~~~~
+src/core/RenderCore.cpp:746:7: warning: unused function 'opticalHighlightMatte' [-Wunused-function]
+  746 | float opticalHighlightMatte(Rgb value, float alpha)
+      |       ^~~~~~~~~~~~~~~~~~~~~
+3 warnings generated.
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/metal/MetalRenderBackend.mm" -o "build/obj/metal/MetalRenderBackend.o"
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -DCBEF_ENABLE_METAL_TEST -Isrc/core "tests/mist_render_contract.mm" "build/obj/core/RenderCore.o" "build/obj/metal/MetalRenderBackend.o" \
+		-o "build/tests/mist_render_contract" -framework Foundation -framework Metal
+"build/tests/mist_render_contract"
+mist_render_contract: PASS

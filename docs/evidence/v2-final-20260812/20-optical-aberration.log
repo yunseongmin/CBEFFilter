@@ -1,0 +1,3 @@
+aberration ca0=0.00000 ca100=1.24420 coma_shift=0.13603 astig_delta=0.12539 focus_corner_delta=0.96404
+quality errors preview=0.038317 balanced=0.023000 final=0.000000
+optical_aberration_cpu_contract: PASS

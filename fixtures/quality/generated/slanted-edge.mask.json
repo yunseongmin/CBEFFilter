@@ -1,0 +1,48 @@
+{
+  "crop": [
+    0,
+    0,
+    192,
+    128
+  ],
+  "fixture_id": "slanted-edge",
+  "regions": [
+    {
+      "id": "dark",
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          192,
+          0
+        ],
+        [
+          0,
+          128
+        ]
+      ],
+      "shape": "polygon"
+    },
+    {
+      "id": "bright",
+      "points": [
+        [
+          192,
+          0
+        ],
+        [
+          192,
+          128
+        ],
+        [
+          0,
+          128
+        ]
+      ],
+      "shape": "polygon"
+    }
+  ],
+  "schema_version": "1.0"
+}

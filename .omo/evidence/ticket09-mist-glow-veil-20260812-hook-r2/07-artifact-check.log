@@ -1,0 +1,7 @@
+--- ARTIFACT CHECK ---
+-rwxr-xr-x@ 1 younseongmin  staff  359360 Aug 12 14:59 build/CBEFFilmEffects.ofx.bundle/Contents/MacOS/CBEFFilmEffects.ofx
+-rw-r--r--@ 1 younseongmin  staff  315258 Aug 12 14:59 build/CBEFFilmEffects.ofx.bundle/Contents/Resources/CBEFFilmEffects.metallib
+build/CBEFFilmEffects.ofx.bundle/Contents/MacOS/CBEFFilmEffects.ofx:          Mach-O 64-bit bundle arm64
+build/CBEFFilmEffects.ofx.bundle/Contents/Resources/CBEFFilmEffects.metallib: MetalLib executable (MacOS), version 1.2.9
+2f0977def464b6f8dbc5951cba74e0d48e327ad8bca3389b55d4994c2abe4e74  build/CBEFFilmEffects.ofx.bundle/Contents/MacOS/CBEFFilmEffects.ofx
+ea9c2ceda3d84d1d278a7f71031ed10791369df1aca9d787e2d54d47ef8939f7  build/CBEFFilmEffects.ofx.bundle/Contents/Resources/CBEFFilmEffects.metallib

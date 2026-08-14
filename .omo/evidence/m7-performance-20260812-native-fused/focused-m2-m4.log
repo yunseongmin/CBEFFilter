@@ -1,0 +1,4 @@
+"build/tests/halation_render_contract"
+halation max pixel=-4,3 c=2 e=0.05 a=0.05\nhalation max pixel=42,29 c=2 e=0.052285 a=0.052285\nhalation max pixel=41,31 c=2 e=0.8 a=0.8\nhalation max=5.96046e-08\nhalation_render_contract: PASS (CPU + Metal M2 Halation)
+"build/tests/mist_render_contract"
+mist_render_contract: PASS

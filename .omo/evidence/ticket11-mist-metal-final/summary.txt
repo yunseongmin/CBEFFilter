@@ -1,0 +1,26 @@
+Ticket 11 — Mist Metal quality, parity, and UHD performance
+
+Build environment: Xcode 26.6 / Metal toolchain via DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer, Apple M3 Pro.
+
+Implementation:
+- MistArguments now carries compiled render-ready profile coefficients and detail controls; Metal no longer reinterprets Grade or UI percentages.
+- Exact CPU-shaped Metal path covers Generic Black/White, all five Grades, independent Glow/Veil/Detail branches, Final/Component/Matte/Glow Only/Veil Only/Detail Difference diagnostics, signed HDR, straight/premultiplied alpha, crop/non-zero origins, padding, and no-wrap edges.
+- UHD/full-frame uses a shared 3x scatter pyramid with one final reconstruction pass. Seven level buffers are owned by FrameArena and reused after command completion. Pyramid path retains the same branch equations and profile direction while reducing scratch to <220 MiB.
+- Added `test-v2-mist-metal` and `benchmark-mist` effect-filtered M7 target; default full M7 target remains unchanged.
+
+Focused validation:
+- `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer make -B test-v2-mist-metal test-m4 test-v2-mist-cpu test-v2-compile test-v2-inspector test-frame-arena`: PASS. Artifact: `ticket11-focused-final.log`.
+- Final rerun after adding the Source Mask (view 5) matrix case: `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer make -B test-v2-mist-metal`: PASS. Artifact: `ticket11-v2-mist-final-rerun.log`.
+- `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer make -B build`: PASS. Artifact: `ticket11-build-final.log`.
+- `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer make -B test-m2`: PASS (`halation_render_contract: PASS (CPU + Metal M2 Halation)`). Artifact: `ticket11-test-m2-final.log`.
+- `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer make -B test`: PASS (`plugin_abi_probe: PASS`). Artifact: `ticket11-test-abi-final.log`.
+- `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer M7_OUTPUT_DIR=.omo/evidence/ticket11-mist-metal-final make benchmark-mist`: PASS with 3 warmups + 10 samples per resolution. Artifact: `m7-performance.json`, `m7-performance.md`.
+
+M7 result:
+- 1920x1080 median 5.4526 ms (41.67 ms gate), scratch requested/reserved 25,804,800 B, arena growth 0 B.
+- 3840x2160 median 9.7669 ms (83.33 ms gate), scratch requested/reserved 103,219,200 B (<230,686,720 B / 220 MiB), arena growth 0 B.
+- `all_pass: true`; bundle SHA-256 `e233fe929b4d9eacc419e823914d39a17bf656c8c58a33ad23bb41316c018686`; bundled metallib SHA-256 `7addbccb89cbddb6d3685a1cebebd0d64f0da6b8c95208db0f9574bcf02eff0a`.
+
+The ticket-focused Mist, M1, M2, M3, M4, M5, M6, typed compile, inspector, FrameArena, ABI, and build commands all pass in the recorded logs.
+
+Cleanup follow-up (2026-08-12): the inactive Mist fused branch, `MistFusedArguments`, and three dual-buffer Metal kernels were removed. `make -B build test-v2-mist-metal test-m4` passed. Static verification confirms the live metallib still contains only the active Mist pyramid/finalize symbols (`cbef_mist_prepare_pyramid`, `cbef_mist_horizontal`, `cbef_mist_vertical`, `cbef_mist_finalize_pyramid`). The first cleanup benchmark was attempted while the shared Grain CPU/statistical worker was running and recorded a contention failure (UHD 171.3659 ms); after that worker exited, one clean `benchmark-mist` run passed: 1080p median 6.1326 ms, UHD median 13.7307 ms, scratch requested/reserved 103,219,200 B, arena growth 0 B. Clean artifact: `cleanup-benchmark-clean/m7-performance.json` and `.md`; full command log: `ticket11-cleanup-validation.log`. Ticket status is restored to `resolved`.

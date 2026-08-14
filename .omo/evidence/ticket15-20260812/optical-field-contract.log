@@ -1,0 +1,5 @@
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/core/RenderCore.cpp" -o "build/obj/core/RenderCore.o"
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core "tests/optical_field_psf_cpu_contract.cpp" "build/obj/core/RenderCore.o" -o "build/tests/optical_field_psf_cpu_contract"
+"build/tests/optical_field_psf_cpu_contract"
+field center energy=1.004276 centroid=(96.0002,95.9996) corner energy=1.002827 centroid=(23.8140,23.8123) nearby centroid=(25.8189,23.8120) cat-eye axis 0.997569 -> 0.868456
+optical_field_psf_cpu_contract: PASS

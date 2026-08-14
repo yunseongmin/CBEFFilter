@@ -1,0 +1,12 @@
+Color Emphasis mode=1 scenario=0 maximum_error=5.96046e-08
+Color Emphasis mode=2 scenario=1 maximum_error=2.98023e-08
+Color Emphasis mode=3 scenario=2 maximum_error=2.98023e-08
+Color Emphasis mode=4 scenario=3 maximum_error=1.78814e-07
+Color Emphasis mode=4 scenario=4 maximum_error=5.96046e-08
+Color Emphasis mode=4 scenario=5 maximum_error=7.45058e-09
+Color Emphasis mode=4 scenario=6 maximum_error=2.98023e-08
+Color Emphasis mode=4 scenario=7 maximum_error=2.98023e-08
+wide parity channel 0 energy cpu=111.729 metal=100 centroid cpu=(358.949,202.074) metal=(341,192)
+wide parity channel 1 energy cpu=53.4317 metal=50 centroid cpu=(351.982,198.163) metal=(341,192)
+wide parity channel 2 energy cpu=25.7881 metal=25 centroid cpu=(346.226,194.933) metal=(341,192)
+halation_v2_metal_ticket08: PASS

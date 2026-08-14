@@ -1,0 +1,30 @@
+# 04 — 사전 컴파일 Metal 라이브러리
+
+**What to build:** 설치 번들에 검증된 Metal 라이브러리를 포함하여 첫 렌더 때 거대한 shader source를 컴파일하지 않고도 다섯 효과가 안정적으로 시작되게 합니다.
+
+**Blocked by:** None — can start immediately.
+
+**Status:** resolved
+
+- [x] arm64 설치 번들 빌드가 Metal shader를 사전 컴파일하고 필요한 라이브러리를 올바른 번들 위치에 포함합니다.
+- [x] 제품 렌더 경로는 runtime source compilation에 의존하지 않고 device별 pipeline을 재사용합니다.
+- [x] 라이브러리 또는 pipeline을 만들 수 없으면 정의된 backend 오류로 실패하며 부분 결과를 성공으로 보고하지 않습니다.
+- [x] 기존 다섯 효과의 CPU·Metal parity, alpha, crop, identity와 same-queue completion 계약이 유지됩니다.
+- [x] ABI probe가 사전 컴파일 라이브러리를 포함한 최종 번들을 로드하고 다섯 stable ID를 확인합니다.
+- [x] 개발자가 실행할 build와 설치 절차가 새 번들 자산을 빠뜨리지 않도록 문서화됩니다.
+
+## Comments
+
+- 2026-08-12: Implementation landed in `src/metal/kernels/CBEFFilmEffects.metal`, `src/metal/MetalRenderBackend.mm`, `Makefile`, `tests/plugin_abi_probe.cpp`, and `README.md`. Runtime source compilation was removed; the backend loads and caches a bundled `CBEFFilmEffects.metallib` with `newLibraryWithURL:`. CPU M1–M6 contracts and arm64 Objective-C++/ABI probe compilation pass. Full bundle/GPU verification is blocked on this host because the full Xcode `metal` and `metallib` tools are unavailable; see `.omo/evidence/ticket04-20260812/verification.md`.
+- 2026-08-12 re-verification: direct object build, ABI probe compilation, runtime-source scan, package-rule inspection, and rebuilt M1–M6 CPU contracts were rerun. The full package build exits 2 at `xcrun -sdk macosx metal`; the ABI probe correctly rejects the current stale bundle because `Contents/Resources/CBEFFilmEffects.metallib` is absent. Fresh evidence is in `.omo/evidence/ticket04-reverify-20260812/verification.md`. Status remains `claimed`.
+- 2026-08-12: Environment audit confirmed that no Xcode app or Metal compiler exists on this Mac. `xcode-select -p` is `/Library/Developer/CommandLineTools`; both `xcrun --find metal` and `xcrun --find metallib` fail. The ticket is returned to `ready-for-agent` until full Xcode is installed and the bundle, GPU contracts, and ABI probe execute successfully.
+- 2026-08-12: Installing full Xcode is an external system-level action requiring the user, so this ticket is `ready-for-human`. After installation, rerun the full bundle build, M1–M6 GPU contracts, and ABI probe before marking it resolved.
+
+## Answer
+
+- Fixed the extracted Metal source by restoring the missing closing braces for `cbef_grain_final` and `cbef_mist_prepare`. The RED compiler errors at the mist kernel boundary are gone.
+- With `DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer`, `make -B build` passes and produces an arm64 `CBEFFilmEffects.metallib` in `Contents/Resources`.
+- `make -B build test-v2-compile test-m1 test-m2 test-m3 test-m4 test-m5 test-m6` passed: typed compile plus M1–M6 CPU/Metal contracts all report PASS. A clean focused rerun exits 0.
+- `make test` passes the ABI probe, which verifies all five stable IDs and the non-empty bundled metallib resource.
+- Running `build/tests/headless_render_contract` with `CBEF_METALLIB_PATH` set to the bundle resource passes the CPU + Metal M1 contract, exercising the bundled URL load path.
+- Evidence: `.omo/evidence/ticket04-red-20260812/full-build-red.log`, `.omo/evidence/ticket04-red-20260812/full-build-after-mist-brace.log`, and `.omo/evidence/ticket04-green-20260812/`.

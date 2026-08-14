@@ -1,0 +1,42 @@
+xcrun clang++ -Iinclude -Ibuild/openfx-sdk/OpenFX-1.4/include -Ibuild/openfx-sdk/Support/include -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -c "src/ofx/CBEFFilmEffects.cpp" -o "build/obj/CBEFFilmEffects.o"
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/core/RenderCore.cpp" -o "build/obj/core/RenderCore.o"
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/metal/MetalRenderBackend.mm" -o "build/obj/metal/MetalRenderBackend.o"
+xcrun clang++ -Iinclude -Ibuild/openfx-sdk/OpenFX-1.4/include -Ibuild/openfx-sdk/Support/include -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -w -c "build/openfx-sdk/Support/Library/ofxsCore.cpp" -o "build/obj/openfx/ofxsCore.o"
+xcrun clang++ -Iinclude -Ibuild/openfx-sdk/OpenFX-1.4/include -Ibuild/openfx-sdk/Support/include -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -w -c "build/openfx-sdk/Support/Library/ofxsImageEffect.cpp" -o "build/obj/openfx/ofxsImageEffect.o"
+xcrun clang++ -Iinclude -Ibuild/openfx-sdk/OpenFX-1.4/include -Ibuild/openfx-sdk/Support/include -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -w -c "build/openfx-sdk/Support/Library/ofxsInteract.cpp" -o "build/obj/openfx/ofxsInteract.o"
+xcrun clang++ -Iinclude -Ibuild/openfx-sdk/OpenFX-1.4/include -Ibuild/openfx-sdk/Support/include -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -w -c "build/openfx-sdk/Support/Library/ofxsLog.cpp" -o "build/obj/openfx/ofxsLog.o"
+xcrun clang++ -Iinclude -Ibuild/openfx-sdk/OpenFX-1.4/include -Ibuild/openfx-sdk/Support/include -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -w -c "build/openfx-sdk/Support/Library/ofxsMultiThread.cpp" -o "build/obj/openfx/ofxsMultiThread.o"
+xcrun clang++ -Iinclude -Ibuild/openfx-sdk/OpenFX-1.4/include -Ibuild/openfx-sdk/Support/include -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -w -c "build/openfx-sdk/Support/Library/ofxsParams.cpp" -o "build/obj/openfx/ofxsParams.o"
+xcrun clang++ -Iinclude -Ibuild/openfx-sdk/OpenFX-1.4/include -Ibuild/openfx-sdk/Support/include -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -w -c "build/openfx-sdk/Support/Library/ofxsProperty.cpp" -o "build/obj/openfx/ofxsProperty.o"
+xcrun clang++ -Iinclude -Ibuild/openfx-sdk/OpenFX-1.4/include -Ibuild/openfx-sdk/Support/include -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -w -c "build/openfx-sdk/Support/Library/ofxsPropertyValidation.cpp" -o "build/obj/openfx/ofxsPropertyValidation.o"
+xcrun clang++ build/obj/CBEFFilmEffects.o build/obj/core/RenderCore.o build/obj/metal/MetalRenderBackend.o build/obj/openfx/ofxsCore.o build/obj/openfx/ofxsImageEffect.o build/obj/openfx/ofxsInteract.o build/obj/openfx/ofxsLog.o build/obj/openfx/ofxsMultiThread.o build/obj/openfx/ofxsParams.o build/obj/openfx/ofxsProperty.o build/obj/openfx/ofxsPropertyValidation.o -o "build/CBEFFilmEffects.ofx.bundle/Contents/MacOS/CBEFFilmEffects.ofx" -bundle -arch arm64 -Wl,-dead_strip -framework Foundation -framework Metal
+cp vendor/openfx/THIRD_PARTY_NOTICES.md "build/CBEFFilmEffects.ofx.bundle/Contents/Resources/THIRD_PARTY_NOTICES.md"
+/usr/libexec/PlistBuddy -c 'Clear dict' "build/CBEFFilmEffects.ofx.bundle/Contents/Info.plist" 2>/dev/null || true
+Initializing Plist...
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -DCBEF_ENABLE_METAL_TEST -Isrc/core "tests/headless_render_contract.mm" "build/obj/core/RenderCore.o" "build/obj/metal/MetalRenderBackend.o" \
+		-o "build/tests/headless_render_contract" -framework Foundation -framework Metal
+"build/tests/headless_render_contract"
+headless_render_contract: PASS (CPU + Metal M1 contract)
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -DCBEF_ENABLE_METAL_TEST -Isrc/core "tests/halation_render_contract.mm" "build/obj/core/RenderCore.o" "build/obj/metal/MetalRenderBackend.o" \
+		-o "build/tests/halation_render_contract" -framework Foundation -framework Metal
+"build/tests/halation_render_contract"
+halation_render_contract: PASS (CPU + Metal M2 Halation)
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -DCBEF_ENABLE_METAL_TEST -Isrc/core "tests/film_grain_render_contract.mm" "build/obj/core/RenderCore.o" "build/obj/metal/MetalRenderBackend.o" \
+        -o "build/tests/film_grain_render_contract" -framework Foundation -framework Metal
+"build/tests/film_grain_render_contract"
+film_grain_render_contract: PASS
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -DCBEF_ENABLE_METAL_TEST -Isrc/core "tests/mist_render_contract.mm" "build/obj/core/RenderCore.o" "build/obj/metal/MetalRenderBackend.o" \
+		-o "build/tests/mist_render_contract" -framework Foundation -framework Metal
+"build/tests/mist_render_contract"
+mist_render_contract: PASS
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -DCBEF_ENABLE_METAL_TEST -Isrc/core "tests/optical_blur_render_contract.mm" "build/obj/core/RenderCore.o" "build/obj/metal/MetalRenderBackend.o" \
+		-o "build/tests/optical_blur_render_contract" -framework Foundation -framework Metal
+"build/tests/optical_blur_render_contract"
+optical_blur_render_contract: PASS (CPU + Metal M5 Optical Blur)
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -DCBEF_ENABLE_METAL_TEST -Isrc/core "tests/lens_reflections_render_contract.mm" "build/obj/core/RenderCore.o" "build/obj/metal/MetalRenderBackend.o" \
+		-o "build/tests/lens_reflections_render_contract" -framework Foundation -framework Metal
+"build/tests/lens_reflections_render_contract"
+lens_reflections_render_contract: PASS (CPU + Metal M6 Lens Reflections)
+
+make_exit=0
+pass_count=6

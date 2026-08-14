@@ -1,0 +1,869 @@
+{
+  "asset_root": "fixtures/quality/generated",
+  "color_pipeline": {
+    "domain": "scene-linear",
+    "gamut": "working-space supplied by render request",
+    "negative_and_hdr": "preserved; no early clamp",
+    "transfer": "none",
+    "working_modes": [
+      "DWG / Intermediate",
+      "DWG / Linear",
+      "Rec.709 / Gamma 2.4"
+    ]
+  },
+  "description": "Reproducible synthetic scene-linear fixtures for the CBEF v2 Model and Safety Gates.",
+  "external_assets": {
+    "cache_dir": "fixtures/quality/local-assets",
+    "record_schema": {
+      "acquired_on": "required (YYYY-MM-DD)",
+      "clip_frame": "required",
+      "color_transform": "required",
+      "decode": "required",
+      "download_terms": "required verbatim summary or URL",
+      "official_url": "required",
+      "redistribution_rights": "required; must be explicit before shipping",
+      "sha256": "required"
+    },
+    "records": [],
+    "redistribution": "forbidden-by-default"
+  },
+  "fixtures": [
+    {
+      "color_encoding": "scene-linear / linear-light RGBA float32",
+      "crop": [
+        0,
+        0,
+        192,
+        128
+      ],
+      "expected_mask": {
+        "labels": [
+          "neutral",
+          "red",
+          "blue",
+          "tungsten"
+        ],
+        "path": "exposure-color-ramp.mask.json"
+      },
+      "frame_path": "exposure-color-ramp.rgba32f",
+      "frame_sha256": "da1e5acf78f80163726d383979a8fbcc63948f2370031c102e20a20955d21659",
+      "frames": [
+        0
+      ],
+      "generator": {
+        "name": "generate_fixtures.py",
+        "version": "1.2.0"
+      },
+      "id": "exposure-color-ramp",
+      "mask_path": "exposure-color-ramp.mask.json",
+      "mask_sha256": "1ac6f3e17e2d132c45435370a62de720c8fe79ac16ac3bbd5b03f9b0849c67e8",
+      "metrics": [
+        {
+          "gate_role": "safety",
+          "id": "finite-float",
+          "measured_profile_gate": false,
+          "method": "all RGBA values are finite; alpha is within [0,1]",
+          "notes": "Safety invariant for the float render surface",
+          "provenance": "standard",
+          "threshold": true
+        },
+        {
+          "gate_role": "safety",
+          "id": "no-wrap",
+          "measured_profile_gate": false,
+          "method": "effect output samples remain inside the declared crop",
+          "notes": "Project edge-safety invariant; not an optical measurement",
+          "provenance": "internal tolerance",
+          "threshold": true
+        },
+        {
+          "gate_role": "model",
+          "id": "exposure-order",
+          "measured_profile_gate": false,
+          "method": "monotonic median luminance across -10..+10 stop ramp",
+          "notes": "Regression target for exposure response",
+          "provenance": "internal tolerance",
+          "threshold": "non-decreasing"
+        }
+      ],
+      "provenance": "internal tolerance",
+      "resolution": [
+        192,
+        128
+      ],
+      "source": "synthetic"
+    },
+    {
+      "color_encoding": "scene-linear / linear-light RGBA float32",
+      "crop": [
+        0,
+        0,
+        192,
+        128
+      ],
+      "expected_mask": {
+        "labels": [
+          "neutral-mid",
+          "neutral-white",
+          "hdr-warm",
+          "negative-residual"
+        ],
+        "path": "flat-fields.mask.json"
+      },
+      "frame_path": "flat-fields.rgba32f",
+      "frame_sha256": "544bd277e5db707adf1b50b04ec46c31513bca5efea01710aeadd5bb99233b06",
+      "frames": [
+        0
+      ],
+      "generator": {
+        "name": "generate_fixtures.py",
+        "version": "1.2.0"
+      },
+      "id": "flat-fields",
+      "mask_path": "flat-fields.mask.json",
+      "mask_sha256": "3e15f611ade792a97b848c4b11f07d2ce257959faa2915918b531664d9a83de1",
+      "metrics": [
+        {
+          "gate_role": "safety",
+          "id": "finite-float",
+          "measured_profile_gate": false,
+          "method": "all RGBA values are finite; alpha is within [0,1]",
+          "notes": "Safety invariant for the float render surface",
+          "provenance": "standard",
+          "threshold": true
+        },
+        {
+          "gate_role": "safety",
+          "id": "no-wrap",
+          "measured_profile_gate": false,
+          "method": "effect output samples remain inside the declared crop",
+          "notes": "Project edge-safety invariant; not an optical measurement",
+          "provenance": "internal tolerance",
+          "threshold": true
+        },
+        {
+          "gate_role": "model",
+          "id": "constant-field",
+          "measured_profile_gate": false,
+          "method": "flat-field response excluding enabled effect contribution",
+          "notes": "Constant-field invariant",
+          "provenance": "standard",
+          "threshold": "preserve"
+        }
+      ],
+      "provenance": "internal tolerance",
+      "resolution": [
+        192,
+        128
+      ],
+      "source": "synthetic"
+    },
+    {
+      "color_encoding": "scene-linear / linear-light RGBA float32",
+      "crop": [
+        0,
+        0,
+        192,
+        128
+      ],
+      "expected_mask": {
+        "labels": [
+          "grid-0-0",
+          "grid-0-1",
+          "grid-0-2",
+          "grid-0-3",
+          "grid-0-4",
+          "grid-1-0",
+          "grid-1-1",
+          "grid-1-2",
+          "grid-1-3",
+          "grid-1-4",
+          "grid-2-0",
+          "grid-2-1",
+          "grid-2-2",
+          "grid-2-3",
+          "grid-2-4",
+          "sweep"
+        ],
+        "path": "point-source-sweep-grid.mask.json"
+      },
+      "frame_path": "point-source-sweep-grid.rgba32f",
+      "frame_sha256": "57296d5b85edf3e2cd274dd7c5a600359b27623c36762926859003d16b5b3249",
+      "frames": [
+        0
+      ],
+      "generator": {
+        "name": "generate_fixtures.py",
+        "version": "1.2.0"
+      },
+      "id": "point-source-sweep-grid",
+      "mask_path": "point-source-sweep-grid.mask.json",
+      "mask_sha256": "867a9f14b2b5b9180666834cea078d3919ff3d0b775c19a881f1458468292601",
+      "metrics": [
+        {
+          "gate_role": "safety",
+          "id": "finite-float",
+          "measured_profile_gate": false,
+          "method": "all RGBA values are finite; alpha is within [0,1]",
+          "notes": "Safety invariant for the float render surface",
+          "provenance": "standard",
+          "threshold": true
+        },
+        {
+          "gate_role": "safety",
+          "id": "no-wrap",
+          "measured_profile_gate": false,
+          "method": "effect output samples remain inside the declared crop",
+          "notes": "Project edge-safety invariant; not an optical measurement",
+          "provenance": "internal tolerance",
+          "threshold": true
+        },
+        {
+          "gate_role": "model",
+          "id": "source-precision",
+          "measured_profile_gate": false,
+          "method": "detected source regions divided by all reported regions",
+          "notes": "Synthetic point-source precision target; not a measured optical profile",
+          "provenance": "internal tolerance",
+          "threshold": ">= 0.90"
+        },
+        {
+          "gate_role": "model",
+          "id": "source-recall",
+          "measured_profile_gate": false,
+          "method": "detected reference regions divided by all expected regions",
+          "notes": "Synthetic point-source recall target; not a measured optical profile",
+          "provenance": "internal tolerance",
+          "threshold": ">= 0.90"
+        },
+        {
+          "gate_role": "model",
+          "id": "source-centroid",
+          "measured_profile_gate": false,
+          "method": "per-source weighted centroid against the fixture mask",
+          "notes": "Spatial source-map target",
+          "provenance": "internal tolerance",
+          "threshold": "<= 1 px"
+        },
+        {
+          "gate_role": "model",
+          "id": "source-energy",
+          "measured_profile_gate": false,
+          "method": "per-source integrated energy against the fixture mask",
+          "notes": "Spatial source-map target",
+          "provenance": "internal tolerance",
+          "threshold": "<= 5%"
+        },
+        {
+          "gate_role": "model",
+          "id": "source-continuity",
+          "measured_profile_gate": false,
+          "method": "source response across horizontal sweep",
+          "notes": "Threshold continuity target",
+          "provenance": "internal tolerance",
+          "threshold": "no discontinuity"
+        }
+      ],
+      "provenance": "internal tolerance",
+      "resolution": [
+        192,
+        128
+      ],
+      "source": "synthetic"
+    },
+    {
+      "color_encoding": "scene-linear / linear-light RGBA float32",
+      "crop": [
+        0,
+        0,
+        192,
+        128
+      ],
+      "expected_mask": {
+        "labels": [
+          "dark",
+          "bright"
+        ],
+        "path": "slanted-edge.mask.json"
+      },
+      "frame_path": "slanted-edge.rgba32f",
+      "frame_sha256": "a7ffa6964974c1320d2d27b6d3eac8b00f38a4f24d86558f60864863f76fe19f",
+      "frames": [
+        0
+      ],
+      "generator": {
+        "name": "generate_fixtures.py",
+        "version": "1.2.0"
+      },
+      "id": "slanted-edge",
+      "mask_path": "slanted-edge.mask.json",
+      "mask_sha256": "ccbde6c223121878e1196d17c1ed78183f3f079ce910dbbf351160f64aee178f",
+      "metrics": [
+        {
+          "gate_role": "safety",
+          "id": "finite-float",
+          "measured_profile_gate": false,
+          "method": "all RGBA values are finite; alpha is within [0,1]",
+          "notes": "Safety invariant for the float render surface",
+          "provenance": "standard",
+          "threshold": true
+        },
+        {
+          "gate_role": "safety",
+          "id": "no-wrap",
+          "measured_profile_gate": false,
+          "method": "effect output samples remain inside the declared crop",
+          "notes": "Project edge-safety invariant; not an optical measurement",
+          "provenance": "internal tolerance",
+          "threshold": true
+        },
+        {
+          "gate_role": "model",
+          "id": "slanted-edge-mtf",
+          "measured_profile_gate": false,
+          "method": "edge spread / MTF measurement on the bright-dark transition",
+          "notes": "Method reference is recorded; project pass envelope is separate",
+          "provenance": "standard",
+          "threshold": "method-defined"
+        }
+      ],
+      "provenance": "internal tolerance",
+      "resolution": [
+        192,
+        128
+      ],
+      "source": "synthetic"
+    },
+    {
+      "color_encoding": "scene-linear / linear-light RGBA float32",
+      "crop": [
+        0,
+        0,
+        192,
+        128
+      ],
+      "expected_mask": {
+        "labels": [
+          "line-1px",
+          "line-2px",
+          "line-3px"
+        ],
+        "path": "thin-line.mask.json"
+      },
+      "frame_path": "thin-line.rgba32f",
+      "frame_sha256": "c82013ab34fb785eb64baec9c99c98efb9ec6fea3ac4056e8d1dd69a819a57ee",
+      "frames": [
+        0
+      ],
+      "generator": {
+        "name": "generate_fixtures.py",
+        "version": "1.2.0"
+      },
+      "id": "thin-line",
+      "mask_path": "thin-line.mask.json",
+      "mask_sha256": "32914b7551f876a130b0db81f492a574858f1a08f2109d627e40b810009f95f0",
+      "metrics": [
+        {
+          "gate_role": "safety",
+          "id": "finite-float",
+          "measured_profile_gate": false,
+          "method": "all RGBA values are finite; alpha is within [0,1]",
+          "notes": "Safety invariant for the float render surface",
+          "provenance": "standard",
+          "threshold": true
+        },
+        {
+          "gate_role": "safety",
+          "id": "no-wrap",
+          "measured_profile_gate": false,
+          "method": "effect output samples remain inside the declared crop",
+          "notes": "Project edge-safety invariant; not an optical measurement",
+          "provenance": "internal tolerance",
+          "threshold": true
+        },
+        {
+          "gate_role": "model",
+          "id": "constant-field",
+          "measured_profile_gate": false,
+          "method": "flat-field response excluding enabled effect contribution",
+          "notes": "Constant-field invariant",
+          "provenance": "standard",
+          "threshold": "preserve"
+        }
+      ],
+      "provenance": "internal tolerance",
+      "resolution": [
+        192,
+        128
+      ],
+      "source": "synthetic"
+    },
+    {
+      "color_encoding": "scene-linear / linear-light RGBA float32",
+      "crop": [
+        0,
+        0,
+        192,
+        128
+      ],
+      "expected_mask": {
+        "labels": [
+          "red-led",
+          "green-led",
+          "blue-led",
+          "white-signage",
+          "fine-led-array"
+        ],
+        "path": "signage-led.mask.json"
+      },
+      "frame_path": "signage-led.rgba32f",
+      "frame_sha256": "5a0f4684851430d6225bfb5ea87dcf903b3fc2808ee9cb43b5c70aa02cc851e9",
+      "frames": [
+        0
+      ],
+      "generator": {
+        "name": "generate_fixtures.py",
+        "version": "1.2.0"
+      },
+      "id": "signage-led",
+      "mask_path": "signage-led.mask.json",
+      "mask_sha256": "1dc24803288a9660e18aa779e42066bc3e194fa6d913a30a5c2918c67390dd2f",
+      "metrics": [
+        {
+          "gate_role": "safety",
+          "id": "finite-float",
+          "measured_profile_gate": false,
+          "method": "all RGBA values are finite; alpha is within [0,1]",
+          "notes": "Safety invariant for the float render surface",
+          "provenance": "standard",
+          "threshold": true
+        },
+        {
+          "gate_role": "safety",
+          "id": "no-wrap",
+          "measured_profile_gate": false,
+          "method": "effect output samples remain inside the declared crop",
+          "notes": "Project edge-safety invariant; not an optical measurement",
+          "provenance": "internal tolerance",
+          "threshold": true
+        },
+        {
+          "gate_role": "model",
+          "id": "source-precision",
+          "measured_profile_gate": false,
+          "method": "detected saturated signage regions divided by all reports",
+          "notes": "Synthetic signage precision target; not a measured optical profile",
+          "provenance": "internal tolerance",
+          "threshold": ">= 0.90"
+        },
+        {
+          "gate_role": "model",
+          "id": "source-recall",
+          "measured_profile_gate": false,
+          "method": "detected saturated signage regions divided by expected regions",
+          "notes": "Synthetic signage recall target; not a measured optical profile",
+          "provenance": "internal tolerance",
+          "threshold": ">= 0.90"
+        },
+        {
+          "gate_role": "model",
+          "id": "source-channel-energy",
+          "measured_profile_gate": false,
+          "method": "per-channel source energy against the signage mask",
+          "notes": "RGB source-map target for clipped LED colors",
+          "provenance": "internal tolerance",
+          "threshold": "<= 5%"
+        },
+        {
+          "gate_role": "safety",
+          "id": "source-determinism",
+          "measured_profile_gate": false,
+          "method": "same frame source map across repeated seek order",
+          "notes": "Spatial detector has no temporal state",
+          "provenance": "internal tolerance",
+          "threshold": "bit exact"
+        }
+      ],
+      "provenance": "internal tolerance",
+      "resolution": [
+        192,
+        128
+      ],
+      "source": "synthetic"
+    },
+    {
+      "color_encoding": "scene-linear / linear-light RGBA float32",
+      "crop": [
+        0,
+        0,
+        192,
+        128
+      ],
+      "expected_mask": {
+        "labels": [
+          "semi-transparent-circle",
+          "transparent-checker"
+        ],
+        "path": "alpha-edge.mask.json"
+      },
+      "frame_path": "alpha-edge.rgba32f",
+      "frame_sha256": "75b4d53773142f9b043915e308df50fdf672aee6d1fdfcbdc7b351c69b1422ea",
+      "frames": [
+        0
+      ],
+      "generator": {
+        "name": "generate_fixtures.py",
+        "version": "1.2.0"
+      },
+      "id": "alpha-edge",
+      "mask_path": "alpha-edge.mask.json",
+      "mask_sha256": "dfc3afc031ae4e488513e23f2c8facdb1156506ba25b2e93230e5201b406acc1",
+      "metrics": [
+        {
+          "gate_role": "safety",
+          "id": "finite-float",
+          "measured_profile_gate": false,
+          "method": "all RGBA values are finite; alpha is within [0,1]",
+          "notes": "Safety invariant for the float render surface",
+          "provenance": "standard",
+          "threshold": true
+        },
+        {
+          "gate_role": "safety",
+          "id": "no-wrap",
+          "measured_profile_gate": false,
+          "method": "effect output samples remain inside the declared crop",
+          "notes": "Project edge-safety invariant; not an optical measurement",
+          "provenance": "internal tolerance",
+          "threshold": true
+        },
+        {
+          "gate_role": "safety",
+          "id": "alpha-preservation",
+          "measured_profile_gate": false,
+          "method": "transparent and semi-transparent edge alpha",
+          "notes": "Straight-alpha contract",
+          "provenance": "standard",
+          "threshold": "preserve"
+        }
+      ],
+      "provenance": "internal tolerance",
+      "resolution": [
+        192,
+        128
+      ],
+      "source": "synthetic"
+    },
+    {
+      "color_encoding": "scene-linear / linear-light RGBA float32",
+      "crop": [
+        0,
+        0,
+        192,
+        128
+      ],
+      "expected_mask": {
+        "labels": [
+          "psf-0",
+          "psf-1",
+          "psf-2",
+          "psf-3",
+          "psf-4",
+          "psf-5",
+          "psf-6",
+          "psf-7",
+          "psf-8"
+        ],
+        "path": "field-psf.mask.json"
+      },
+      "field_coordinate_convention": "pixel-center normalized over the full declared data window; canonical field coordinates are independent of crop",
+      "frame_path": "field-psf.rgba32f",
+      "frame_sha256": "09df164907211ad2e295a9bbe25600cbc8c801ea84482bfdaa053ab64c127d97",
+      "frames": [
+        0
+      ],
+      "generator": {
+        "name": "generate_fixtures.py",
+        "version": "1.2.0"
+      },
+      "id": "field-psf",
+      "mask_path": "field-psf.mask.json",
+      "mask_sha256": "221391a959e1a1da98de2265e196571de688ff813983237859a89531ee067569",
+      "metrics": [
+        {
+          "gate_role": "safety",
+          "id": "finite-float",
+          "measured_profile_gate": false,
+          "method": "all RGBA values are finite; alpha is within [0,1]",
+          "notes": "Safety invariant for the float render surface",
+          "provenance": "standard",
+          "threshold": true
+        },
+        {
+          "gate_role": "safety",
+          "id": "no-wrap",
+          "measured_profile_gate": false,
+          "method": "effect output samples remain inside the declared crop",
+          "notes": "Project edge-safety invariant; not an optical measurement",
+          "provenance": "internal tolerance",
+          "threshold": true
+        },
+        {
+          "gate_role": "model",
+          "id": "psf-centroid",
+          "measured_profile_gate": false,
+          "method": "centroid of each point response",
+          "notes": "Tile continuity target",
+          "provenance": "internal tolerance",
+          "threshold": "<= 0.25 px jump"
+        },
+        {
+          "gate_role": "model",
+          "id": "psf-second-moment",
+          "measured_profile_gate": false,
+          "method": "normalized x/y second moment of each point response",
+          "notes": "Field-dependent PSF shape regression; not a measured lens profile",
+          "provenance": "internal tolerance",
+          "threshold": "continuous center-to-corner"
+        },
+        {
+          "gate_role": "measured-profile-forbidden",
+          "id": "psf-axis-ratio",
+          "measured_profile_gate": false,
+          "method": "sqrt(second-moment-x / second-moment-y) across field points",
+          "notes": "Synthetic cat-eye target; calibration placeholder",
+          "provenance": "placeholder",
+          "threshold": "profile-specific"
+        },
+        {
+          "gate_role": "measured-profile-forbidden",
+          "id": "psf-energy",
+          "measured_profile_gate": false,
+          "method": "sum of positive response over each point region",
+          "notes": "Calibration placeholder; cannot approve a measured lens profile",
+          "provenance": "placeholder",
+          "threshold": "profile-specific"
+        }
+      ],
+      "provenance": "internal tolerance",
+      "resolution": [
+        192,
+        128
+      ],
+      "source": "synthetic"
+    },
+    {
+      "color_encoding": "scene-linear / linear-light RGBA float32",
+      "crop": [
+        0,
+        0,
+        192,
+        128
+      ],
+      "expected_mask": {
+        "labels": [
+          "skin-fine",
+          "eye-edge",
+          "hair",
+          "fabric",
+          "flare"
+        ],
+        "path": "mist-detail-frequency.mask.json"
+      },
+      "frame_path": "mist-detail-frequency.rgba32f",
+      "frame_sha256": "b8a6ec2680d998f105e26e98d5fdb5d3a1feda8f6d8fa1f2c183a39e692f1a47",
+      "frames": [
+        0
+      ],
+      "generator": {
+        "name": "generate_fixtures.py",
+        "version": "1.2.0"
+      },
+      "id": "mist-detail-frequency",
+      "mask_path": "mist-detail-frequency.mask.json",
+      "mask_sha256": "7324dc64758eb7e54acc76bf91a13c348d0b0e727b15754f0788ada54d04b1bf",
+      "metrics": [
+        {
+          "gate_role": "safety",
+          "id": "finite-float",
+          "measured_profile_gate": false,
+          "method": "all RGBA values are finite; alpha is within [0,1]",
+          "notes": "Safety invariant for the float render surface",
+          "provenance": "standard",
+          "threshold": true
+        },
+        {
+          "gate_role": "safety",
+          "id": "no-wrap",
+          "measured_profile_gate": false,
+          "method": "effect output samples remain inside the declared crop",
+          "notes": "Project edge-safety invariant; not an optical measurement",
+          "provenance": "internal tolerance",
+          "threshold": true
+        },
+        {
+          "gate_role": "safety",
+          "id": "detail-difference-reconstruction",
+          "measured_profile_gate": false,
+          "method": "Final minus source equals Glow + Veil + Detail",
+          "notes": "Public CPU diagnostic reconstruction",
+          "provenance": "internal tolerance",
+          "threshold": "<= 2e-4"
+        },
+        {
+          "gate_role": "measured-profile-forbidden",
+          "id": "skin-high-frequency-softness",
+          "measured_profile_gate": false,
+          "method": "fine-frequency energy decreases at zero retention",
+          "notes": "Synthetic detail target; not a measured filter profile",
+          "provenance": "placeholder",
+          "threshold": "profile-specific"
+        },
+        {
+          "gate_role": "measured-profile-forbidden",
+          "id": "edge-mid-frequency-retention",
+          "measured_profile_gate": false,
+          "method": "edge mid-band remains above skin fine-band response",
+          "notes": "Synthetic edge target; not a measured MTF claim",
+          "provenance": "placeholder",
+          "threshold": "profile-specific"
+        }
+      ],
+      "provenance": "internal tolerance",
+      "resolution": [
+        192,
+        128
+      ],
+      "source": "synthetic"
+    },
+    {
+      "color_encoding": "scene-linear / linear-light RGBA float32",
+      "crop": [
+        0,
+        0,
+        192,
+        128
+      ],
+      "expected_mask": {
+        "labels": [
+          "exposure-0-record-0",
+          "exposure-0-record-1",
+          "exposure-0-record-2",
+          "exposure-1-record-0",
+          "exposure-1-record-1",
+          "exposure-1-record-2",
+          "exposure-2-record-0",
+          "exposure-2-record-1",
+          "exposure-2-record-2"
+        ],
+        "path": "grain-response-grid.mask.json"
+      },
+      "frame_path": "grain-response-grid.rgba32f",
+      "frame_sha256": "69adb84922cf881231d5257297ee25f3df0762c330466a07987e247226c1c0b0",
+      "frames": [
+        0
+      ],
+      "generator": {
+        "name": "generate_fixtures.py",
+        "version": "1.2.0"
+      },
+      "id": "grain-response-grid",
+      "mask_path": "grain-response-grid.mask.json",
+      "mask_sha256": "91c080e5d0fe225dc1fed8ebd5f50dd26974f554ac3885fbe0af7d439a5ed9c0",
+      "metrics": [
+        {
+          "gate_role": "safety",
+          "id": "finite-float",
+          "measured_profile_gate": false,
+          "method": "all RGBA values are finite; alpha is within [0,1]",
+          "notes": "Safety invariant for the float render surface",
+          "provenance": "standard",
+          "threshold": true
+        },
+        {
+          "gate_role": "safety",
+          "id": "no-wrap",
+          "measured_profile_gate": false,
+          "method": "effect output samples remain inside the declared crop",
+          "notes": "Project edge-safety invariant; not an optical measurement",
+          "provenance": "internal tolerance",
+          "threshold": true
+        },
+        {
+          "gate_role": "model",
+          "id": "exposure-rms-envelope",
+          "measured_profile_gate": false,
+          "method": "48-frame flat-field RMS over -4/0/+4 stop rows",
+          "notes": "Synthetic generic profile envelope; no measured stock claim",
+          "provenance": "placeholder",
+          "threshold": "profile-specific"
+        },
+        {
+          "gate_role": "model",
+          "id": "record-covariance",
+          "measured_profile_gate": false,
+          "method": "R/G/B covariance and record-specific radial PSD",
+          "notes": "Synthetic record target; no measured stock claim",
+          "provenance": "placeholder",
+          "threshold": "profile-specific"
+        },
+        {
+          "gate_role": "model",
+          "id": "population-diameter",
+          "measured_profile_gate": false,
+          "method": "fine/medium/coarse particle diameter and clump response",
+          "notes": "Synthetic population target; no measured stock claim",
+          "provenance": "placeholder",
+          "threshold": "profile-specific"
+        }
+      ],
+      "provenance": "internal tolerance",
+      "resolution": [
+        192,
+        128
+      ],
+      "source": "synthetic"
+    }
+  ],
+  "format": {
+    "alpha": "straight",
+    "byte_order": "little-endian",
+    "channels": [
+      "R",
+      "G",
+      "B",
+      "A"
+    ],
+    "extension": ".rgba32f",
+    "magic": "CBEF_RGBA32F\\n",
+    "name": "CBEF RGBA32F",
+    "sample_type": "float32"
+  },
+  "generator": {
+    "command": "python3 fixtures/quality/generate_fixtures.py",
+    "name": "generate_fixtures.py",
+    "version": "1.2.0"
+  },
+  "provenance_classes": {
+    "internal tolerance": "Project regression or CPU/Metal agreement limit; not a material claim.",
+    "measured": "Envelope measured from a fixed, rights-cleared asset and acquisition manifest.",
+    "placeholder": "Temporary calibration target; never evidence for a measured profile.",
+    "standard": "Measurement definition or invariant directly specified by a public standard."
+  },
+  "report_contract": {
+    "comparison": "fixtures/quality/render_report.py",
+    "note": "The report bridge consumes top-level contract output; it does not expose internal kernels or fake hosts.",
+    "producer": "top-level RenderRequest/RenderSubmission contract",
+    "required_fields": [
+      "fixture_id",
+      "effect",
+      "backend",
+      "frame",
+      "metrics",
+      "provenance"
+    ],
+    "schema_version": "1.0"
+  },
+  "schema_version": "1.0",
+  "suite_id": "cbef-quality-p0"
+}

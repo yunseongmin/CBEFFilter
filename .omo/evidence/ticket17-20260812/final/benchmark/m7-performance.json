@@ -1,0 +1,15 @@
+{
+  "schema_version": 2,
+  "generated_at_utc": "2026-08-12T09:32:25Z",
+  "os": "26.5.2",
+  "gpu": "Apple M3 Pro",
+  "power_thermal_gpu_load": "unavailable",
+  "bundle_path": "build/CBEFFilmEffects.ofx.bundle/Contents/MacOS/CBEFFilmEffects.ofx",
+  "bundle_hash_sha256": "57a1de0b3a9fa075893d81eff945590cccd30c00572f2e4a7d193554474a503e",
+  "thresholds": {"1080p_ms": 41.67, "4k_ms": 83.33, "grain_4k_ms": 41.67, "temporary_bytes": 1073741824, "steady_delta_bytes": 8388608, "halation_scratch_bytes": 167772160, "mist_scratch_bytes": 230686720, "grain_scratch_bytes": 67108864, "optical_scratch_bytes": 201326592},
+  "cases": [
+    {"effect": "optical_blur", "width": 1920, "height": 1080, "samples_ms": [15.0788, 14.5353, 13.7149, 12.8057, 12.1467, 11.5255, 12.0608, 11.8443, 11.7062, 11.5505], "frame_times": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "median_ms": 12.1037, "average_ms": 12.6969, "initial_baseline_bytes": 66994176, "baseline_bytes": 111067136, "warmup_baseline_bytes": 111067136, "peak_bytes": 111067136, "steady_bytes": 111067136, "temporary_peak_bytes": 44072960, "steady_delta_bytes": 0, "scratch_requested_peak": 44072960, "scratch_reserved_peak": 44072960, "arena_growth_after_warmup": 0, "threshold_ms": 41.6700, "timing_pass": true, "temporary_pass": true, "steady_pass": true, "pass": true},
+    {"effect": "optical_blur", "width": 3840, "height": 2160, "samples_ms": [47.5558, 47.6044, 48.2083, 47.9463, 48.0534, 49.1148, 49.1524, 49.3765, 48.9547, 49.9371], "frame_times": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "median_ms": 48.5815, "average_ms": 48.5904, "initial_baseline_bytes": 310263808, "baseline_bytes": 486522880, "warmup_baseline_bytes": 486522880, "peak_bytes": 486522880, "steady_bytes": 486522880, "temporary_peak_bytes": 176259072, "steady_delta_bytes": 0, "scratch_requested_peak": 176259072, "scratch_reserved_peak": 176259072, "arena_growth_after_warmup": 0, "threshold_ms": 83.3300, "timing_pass": true, "temporary_pass": true, "steady_pass": true, "pass": true}
+  ],
+  "all_pass": true
+}

@@ -1,0 +1,11 @@
+MPSImageConvolution separable POC gate
+
+Invocation:
+  make -C DaVinciFilmPlugin test-m4
+  CBEF_MIST_MPS_POC=1 DaVinciFilmPlugin/build/tests/mist_render_contract
+
+Result:
+  The focused suite reached the aligned CPU/Metal parity assertion and failed.
+  Non-aligned maximum error: 1.78516e-05.
+  Aligned maximum error: 2.59677e-03 (required <= 2.0e-04).
+  The POC was discarded; production remains on the buffer-backed fused path.

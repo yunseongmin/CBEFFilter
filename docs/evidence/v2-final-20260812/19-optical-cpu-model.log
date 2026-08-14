@@ -1,0 +1,3 @@
+field center energy=1.003325 centroid=(96.0006,95.9984) corner energy=1.001091 centroid=(23.9563,23.9770) nearby centroid=(25.9607,23.9790) cat-eye axis 0.997569 -> 0.911734
+aberration chromatic separation 0.00000 -> 1.94139, quality errors preview 0.049332 balanced 0.019454, vignette 0.74971 -> 0.16500
+optical_field_psf_cpu_contract: PASS

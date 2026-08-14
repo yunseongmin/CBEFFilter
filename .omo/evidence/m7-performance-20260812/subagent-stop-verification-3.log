@@ -1,0 +1,40 @@
+=== timestamp ===
+Tue Aug 11 19:32:48 UTC 2026
+=== current source/object timestamps ===
+2026-08-12 04:32:29 src/metal/MetalRenderBackend.mm
+2026-08-12 04:28:36 tests/m7_performance_benchmark.mm
+2026-08-12 04:32:33 build/obj/metal/MetalRenderBackend.o
+2026-08-12 04:31:57 build/tests/m7_performance_benchmark
+=== forced harness rebuild ===
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/core/RenderCore.cpp" -o "build/obj/core/RenderCore.o"
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/metal/MetalRenderBackend.mm" -o "build/obj/metal/MetalRenderBackend.o"
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -DCBEF_ENABLE_METAL_TEST -Isrc/core "tests/m7_performance_benchmark.mm" "build/obj/core/RenderCore.o" "build/obj/metal/MetalRenderBackend.o" \
+		-o "build/tests/m7_performance_benchmark" -framework Foundation -framework Metal
+build_exit=0
+=== usage ===
+usage: m7_performance_benchmark [--output-dir DIR] [--bundle PATH]
+usage_exit=2
+=== source contract assertions ===
+30:constexpr std::size_t kWarmupCount = 3U;
+31:constexpr std::size_t kMeasuredCount = 10U;
+200:    return FrameSurface{MemoryKind::Metal,
+256:    if (submission.kind != SubmissionKind::Enqueued) {
+261:        *allocated_peak = std::max(*allocated_peak, static_cast<std::uint64_t>(queue.device.currentAllocatedSize));
+269:    [sentinel waitUntilCompleted];
+299:    result->baseline_bytes = static_cast<std::uint64_t>(device.currentAllocatedSize);
+310:        result->peak_bytes = std::max(result->peak_bytes, static_cast<std::uint64_t>(device.currentAllocatedSize));
+324:        result->peak_bytes = std::max(result->peak_bytes, static_cast<std::uint64_t>(device.currentAllocatedSize));
+330:    result->steady_bytes = static_cast<std::uint64_t>(device.currentAllocatedSize);
+verification_exit=0
+=== rebuilt binary negative execution ===
+m7_performance_benchmark: FAIL
+JSON: .omo/evidence/m7-performance-20260812/negative-run-3/m7-performance.json
+Markdown: .omo/evidence/m7-performance-20260812/negative-run-3/m7-performance.md
+negative_exit=1 (expected 1)
+negative_json_valid=true
+cpu_fallback_rejected=true
+=== artifact sizes ===
+-rw-r--r--@ 1 younseongmin  staff   496 Aug 12 04:33 .omo/evidence/m7-performance-20260812/negative-run-3/m7-performance.json
+-rw-r--r--@ 1 younseongmin  staff  1013 Aug 12 04:33 .omo/evidence/m7-performance-20260812/negative-run-3/m7-performance.md
+-rw-r--r--@ 1 younseongmin  staff  2289 Aug 12 04:33 .omo/evidence/m7-performance-20260812/subagent-stop-verification-3.log
+negative_verification_exit=0

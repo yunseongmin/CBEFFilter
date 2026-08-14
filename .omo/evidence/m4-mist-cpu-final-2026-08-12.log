@@ -1,0 +1,11 @@
+COMMAND: make build
+COMMAND: make test-m4-cpu
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core "tests/mist_render_contract.mm" "build/obj/core/RenderCore.o" -o "build/tests/mist_render_contract"
+"build/tests/mist_render_contract"
+mist_render_contract: PASS
+RESULT: make build exit 0; make test-m4-cpu exit 0; compiler warnings: 0.
+FINAL RESULT: current-source `make build` exit 0; current-source `make test-m4-cpu` exit 0; `mist_render_contract: PASS`; warnings 0.
+COMMAND: make build
+COMMAND: make test-m4-cpu
+"build/tests/mist_render_contract"
+mist_render_contract: PASS

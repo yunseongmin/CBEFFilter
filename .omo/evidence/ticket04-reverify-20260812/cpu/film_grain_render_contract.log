@@ -1,0 +1,11 @@
+scenario=film_grain_render_contract-cpu-build-and-run
+tests/film_grain_render_contract.mm:18:24: warning: unused variable 'kDestinationSentinel' [-Wunused-const-variable]
+   18 | constexpr std::uint8_t kDestinationSentinel = 0xA5U;
+      |                        ^~~~~~~~~~~~~~~~~~~~
+tests/film_grain_render_contract.mm:45:14: warning: unused function 'pixel' [-Wunused-function]
+   45 | const float* pixel(const std::vector<std::uint8_t>& bytes, const Frame& frame, int x, int y)
+      |              ^~~~~
+2 warnings generated.
+build_exit=0
+film_grain_render_contract: PASS
+run_exit=0

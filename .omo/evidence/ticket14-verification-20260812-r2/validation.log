@@ -1,0 +1,69 @@
+# Ticket14 direct verification r2
+
+## CPU Grain statistical contract
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/core/RenderCore.cpp" -o "build/obj/core/RenderCore.o"
+src/core/RenderCore.cpp:51:32: warning: unused variable 'kGrainPopulationDiameter' [-Wunused-const-variable]
+   51 | constexpr std::array<float, 3> kGrainPopulationDiameter = {0.66F, 1.00F, 1.62F};
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~
+1 warning generated.
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core "tests/grain_v2_stock_cpu_contract.cpp" "build/obj/core/RenderCore.o" -o "build/tests/grain_v2_stock_cpu_contract"
+"build/tests/grain_v2_stock_cpu_contract"
+grain_v2_stock_cpu_contract: PASS
+CPU_RC=0
+
+## Metal Grain parity and 640x360 fast-path guard
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/core/RenderCore.cpp" -o "build/obj/core/RenderCore.o"
+src/core/RenderCore.cpp:1963:30: error: no matching function for call to 'max'
+ 1963 |         const double value = std::max(0.0, luminance(original));
+      |                              ^~~~~~~~
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/max.h:35:1: note: candidate template ignored: deduced conflicting types for parameter '_Tp' ('double' vs. 'float')
+   35 | max(_LIBCPP_LIFETIMEBOUND const _Tp& __a, _LIBCPP_LIFETIMEBOUND const _Tp& __b) {
+      | ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/max.h:43:1: note: candidate template ignored: could not match 'initializer_list<_Tp>' against 'double'
+   43 | max(initializer_list<_Tp> __t, _Compare __comp) {
+      | ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/max.h:48:82: note: candidate function template not viable: requires single argument '__t', but 2 arguments were provided
+   48 | [[__nodiscard__]] inline _LIBCPP_HIDE_FROM_ABI _LIBCPP_CONSTEXPR_SINCE_CXX14 _Tp max(initializer_list<_Tp> __t) {
+      |                                                                                  ^   ~~~~~~~~~~~~~~~~~~~~~~~~~
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/max.h:29:1: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+   29 | max(_LIBCPP_LIFETIMEBOUND const _Tp& __a, _LIBCPP_LIFETIMEBOUND const _Tp& __b, _Compare __comp) {
+      | ^                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/core/RenderCore.cpp:1967:30: error: no matching function for call to 'max'
+ 1967 |         const double value = std::max(0.0, luminance(original));
+      |                              ^~~~~~~~
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/max.h:35:1: note: candidate template ignored: deduced conflicting types for parameter '_Tp' ('double' vs. 'float')
+   35 | max(_LIBCPP_LIFETIMEBOUND const _Tp& __a, _LIBCPP_LIFETIMEBOUND const _Tp& __b) {
+      | ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/max.h:43:1: note: candidate template ignored: could not match 'initializer_list<_Tp>' against 'double'
+   43 | max(initializer_list<_Tp> __t, _Compare __comp) {
+      | ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/max.h:48:82: note: candidate function template not viable: requires single argument '__t', but 2 arguments were provided
+   48 | [[__nodiscard__]] inline _LIBCPP_HIDE_FROM_ABI _LIBCPP_CONSTEXPR_SINCE_CXX14 _Tp max(initializer_list<_Tp> __t) {
+      |                                                                                  ^   ~~~~~~~~~~~~~~~~~~~~~~~~~
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/max.h:29:1: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+   29 | max(_LIBCPP_LIFETIMEBOUND const _Tp& __a, _LIBCPP_LIFETIMEBOUND const _Tp& __b, _Compare __comp) {
+      | ^                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/core/RenderCore.cpp:2027:65: error: no matching function for call to 'max'
+ 2027 |             const double energy = static_cast<double>(weight) * std::max(0.0, luminance(values[halationIndex(bounds, x, y)]));
+      |                                                                 ^~~~~~~~
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/max.h:35:1: note: candidate template ignored: deduced conflicting types for parameter '_Tp' ('double' vs. 'float')
+   35 | max(_LIBCPP_LIFETIMEBOUND const _Tp& __a, _LIBCPP_LIFETIMEBOUND const _Tp& __b) {
+      | ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/max.h:43:1: note: candidate template ignored: could not match 'initializer_list<_Tp>' against 'double'
+   43 | max(initializer_list<_Tp> __t, _Compare __comp) {
+      | ^
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/max.h:48:82: note: candidate function template not viable: requires single argument '__t', but 2 arguments were provided
+   48 | [[__nodiscard__]] inline _LIBCPP_HIDE_FROM_ABI _LIBCPP_CONSTEXPR_SINCE_CXX14 _Tp max(initializer_list<_Tp> __t) {
+      |                                                                                  ^   ~~~~~~~~~~~~~~~~~~~~~~~~~
+/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1/__algorithm/max.h:29:1: note: candidate function template not viable: requires 3 arguments, but 2 were provided
+   29 | max(_LIBCPP_LIFETIMEBOUND const _Tp& __a, _LIBCPP_LIFETIMEBOUND const _Tp& __b, _Compare __comp) {
+      | ^                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+src/core/RenderCore.cpp:2135:33: error: no matching function for call to 'lensSourceMatte'
+ 2135 |             const float matte = lensSourceMatte(original, alpha, plan.reflections.threshold);
+      |                                 ^~~~~~~~~~~~~~~
+src/core/RenderCore.cpp:1934:7: note: candidate function not viable: requires 6 arguments, but 3 were provided
+ 1934 | float lensSourceMatte(Rgb original, float alpha, float threshold, int metric, float gamma, float smoothness)
+      |       ^               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+4 errors generated.
+make: *** [build/obj/core/RenderCore.o] Error 1
+METAL_RC=2

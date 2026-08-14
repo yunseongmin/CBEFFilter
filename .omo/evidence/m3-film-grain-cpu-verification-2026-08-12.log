@@ -1,0 +1,6 @@
+$ make build
+BUILD_EXIT_STATUS=0
+$ make test-m3-cpu
+"build/tests/film_grain_render_contract"
+film_grain_render_contract: PASS
+TEST_EXIT_STATUS=0

@@ -1,0 +1,16 @@
+scenario=full-package-build
+xcrun clang++ -Iinclude -Ibuild/openfx-sdk/OpenFX-1.4/include -Ibuild/openfx-sdk/Support/include -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -c "src/ofx/CBEFFilmEffects.cpp" -o "build/obj/CBEFFilmEffects.o"
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/core/RenderCore.cpp" -o "build/obj/core/RenderCore.o"
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/metal/MetalRenderBackend.mm" -o "build/obj/metal/MetalRenderBackend.o"
+xcrun clang++ -Iinclude -Ibuild/openfx-sdk/OpenFX-1.4/include -Ibuild/openfx-sdk/Support/include -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -w -c "build/openfx-sdk/Support/Library/ofxsCore.cpp" -o "build/obj/openfx/ofxsCore.o"
+xcrun clang++ -Iinclude -Ibuild/openfx-sdk/OpenFX-1.4/include -Ibuild/openfx-sdk/Support/include -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -w -c "build/openfx-sdk/Support/Library/ofxsImageEffect.cpp" -o "build/obj/openfx/ofxsImageEffect.o"
+xcrun clang++ -Iinclude -Ibuild/openfx-sdk/OpenFX-1.4/include -Ibuild/openfx-sdk/Support/include -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -w -c "build/openfx-sdk/Support/Library/ofxsInteract.cpp" -o "build/obj/openfx/ofxsInteract.o"
+xcrun clang++ -Iinclude -Ibuild/openfx-sdk/OpenFX-1.4/include -Ibuild/openfx-sdk/Support/include -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -w -c "build/openfx-sdk/Support/Library/ofxsLog.cpp" -o "build/obj/openfx/ofxsLog.o"
+xcrun clang++ -Iinclude -Ibuild/openfx-sdk/OpenFX-1.4/include -Ibuild/openfx-sdk/Support/include -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -w -c "build/openfx-sdk/Support/Library/ofxsMultiThread.cpp" -o "build/obj/openfx/ofxsMultiThread.o"
+xcrun clang++ -Iinclude -Ibuild/openfx-sdk/OpenFX-1.4/include -Ibuild/openfx-sdk/Support/include -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -w -c "build/openfx-sdk/Support/Library/ofxsParams.cpp" -o "build/obj/openfx/ofxsParams.o"
+xcrun clang++ -Iinclude -Ibuild/openfx-sdk/OpenFX-1.4/include -Ibuild/openfx-sdk/Support/include -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -w -c "build/openfx-sdk/Support/Library/ofxsProperty.cpp" -o "build/obj/openfx/ofxsProperty.o"
+xcrun clang++ -Iinclude -Ibuild/openfx-sdk/OpenFX-1.4/include -Ibuild/openfx-sdk/Support/include -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -w -c "build/openfx-sdk/Support/Library/ofxsPropertyValidation.cpp" -o "build/obj/openfx/ofxsPropertyValidation.o"
+xcrun -sdk macosx metal -c "src/metal/kernels/CBEFFilmEffects.metal" -o "build/obj/metal/CBEFFilmEffects.air"
+xcrun: error: unable to find utility "metal", not a developer tool or in PATH
+make: *** [build/CBEFFilmEffects.ofx.bundle/Contents/Resources/CBEFFilmEffects.metallib] Error 72
+result_exit=2

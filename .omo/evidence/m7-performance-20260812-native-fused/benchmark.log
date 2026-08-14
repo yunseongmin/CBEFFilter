@@ -1,0 +1,17 @@
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -DCBEF_ENABLE_METAL_TEST -Isrc/core "tests/m7_performance_benchmark.mm" "build/obj/core/RenderCore.o" "build/obj/metal/MetalRenderBackend.o" \
+		-o "build/tests/m7_performance_benchmark" -framework Foundation -framework Metal
+CBEF_M7_OUTPUT_DIR=".omo/evidence/m7-performance-20260812-native-fused" CBEF_M7_BUNDLE="build/CBEFFilmEffects.ofx.bundle/Contents/MacOS/CBEFFilmEffects.ofx" "build/tests/m7_performance_benchmark"
+m7: begin Halation 1920x1080
+m7: begin Film Grain 1920x1080
+m7: begin Optical Blur 1920x1080
+m7: begin Lens Reflections 1920x1080
+m7: begin Mist Diffusion 1920x1080
+m7: begin Halation 3840x2160
+m7: begin Film Grain 3840x2160
+m7: begin Optical Blur 3840x2160
+m7: begin Lens Reflections 3840x2160
+m7: begin Mist Diffusion 3840x2160
+m7_performance_benchmark: FAIL
+JSON: .omo/evidence/m7-performance-20260812-native-fused/m7-performance.json
+Markdown: .omo/evidence/m7-performance-20260812-native-fused/m7-performance.md
+make: *** [benchmark-m7] Error 1

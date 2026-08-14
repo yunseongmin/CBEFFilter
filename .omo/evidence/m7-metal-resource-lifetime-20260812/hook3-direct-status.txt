@@ -1,0 +1,4 @@
+verification=PASS
+run_log_sha256=3127f6c1319cf0226abaffa9d9e061d89a289f117cbc7c81f16d167671b0b581
+run_log_bytes=6214
+status_file=.omo/evidence/m7-metal-resource-lifetime-20260812/hook3-direct-status.txt

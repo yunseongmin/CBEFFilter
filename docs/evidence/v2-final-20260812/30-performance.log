@@ -1,0 +1,13 @@
+m7: begin Halation 1920x1080
+m7: begin Film Grain 1920x1080
+m7: begin Optical Blur 1920x1080
+m7: begin Lens Reflections 1920x1080
+m7: begin Mist Diffusion 1920x1080
+m7: begin Halation 3840x2160
+m7: begin Film Grain 3840x2160
+m7: begin Optical Blur 3840x2160
+m7: begin Lens Reflections 3840x2160
+m7: begin Mist Diffusion 3840x2160
+m7_performance_benchmark: PASS
+JSON: .omo/evidence/.v2-final-20260812.5Kux00/performance/m7-performance.json
+Markdown: .omo/evidence/.v2-final-20260812.5Kux00/performance/m7-performance.md

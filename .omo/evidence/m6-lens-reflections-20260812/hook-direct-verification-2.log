@@ -1,0 +1,20 @@
+hook direct verification
+2026-08-11T19:14:00Z
+/Users/younseongmin/Documents/CBEF/DaVinciFilmPlugin
+[1] make -B test-m6
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/core/RenderCore.cpp" -o "build/obj/core/RenderCore.o"
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/metal/MetalRenderBackend.mm" -o "build/obj/metal/MetalRenderBackend.o"
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -DCBEF_ENABLE_METAL_TEST -Isrc/core "tests/lens_reflections_render_contract.mm" "build/obj/core/RenderCore.o" "build/obj/metal/MetalRenderBackend.o" \
+		-o "build/tests/lens_reflections_render_contract" -framework Foundation -framework Metal
+"build/tests/lens_reflections_render_contract"
+lens_reflections_render_contract: PASS (CPU + Metal M6 Lens Reflections)
+make_test_m6_exit=0
+[2] build/tests/lens_reflections_render_contract
+lens_reflections_render_contract: PASS (CPU + Metal M6 Lens Reflections)
+binary_exit=0
+[3] artifact
+    1101 .omo/evidence/m6-lens-reflections-20260812/hook-direct-verification-2.log
+pass_lines=2
+verdict=PASS
+wrapper_exit=0
+ef88efd60c3aec34ccf5a9b6acca7c6ddf51c610f665445e458ae11c03dce337  .omo/evidence/m6-lens-reflections-20260812/hook-direct-verification-2.log

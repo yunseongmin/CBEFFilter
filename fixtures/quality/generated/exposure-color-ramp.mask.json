@@ -1,0 +1,44 @@
+{
+  "crop": [
+    0,
+    0,
+    192,
+    128
+  ],
+  "fixture_id": "exposure-color-ramp",
+  "regions": [
+    {
+      "height": 32,
+      "id": "neutral",
+      "shape": "rect",
+      "width": 192,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "height": 32,
+      "id": "red",
+      "shape": "rect",
+      "width": 192,
+      "x": 0,
+      "y": 32
+    },
+    {
+      "height": 32,
+      "id": "blue",
+      "shape": "rect",
+      "width": 192,
+      "x": 0,
+      "y": 64
+    },
+    {
+      "height": 32,
+      "id": "tungsten",
+      "shape": "rect",
+      "width": 192,
+      "x": 0,
+      "y": 96
+    }
+  ],
+  "schema_version": "1.0"
+}

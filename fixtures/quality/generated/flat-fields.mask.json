@@ -1,0 +1,44 @@
+{
+  "crop": [
+    0,
+    0,
+    192,
+    128
+  ],
+  "fixture_id": "flat-fields",
+  "regions": [
+    {
+      "height": 64,
+      "id": "neutral-mid",
+      "shape": "rect",
+      "width": 96,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "height": 64,
+      "id": "neutral-white",
+      "shape": "rect",
+      "width": 96,
+      "x": 96,
+      "y": 0
+    },
+    {
+      "height": 64,
+      "id": "hdr-warm",
+      "shape": "rect",
+      "width": 96,
+      "x": 0,
+      "y": 64
+    },
+    {
+      "height": 64,
+      "id": "negative-residual",
+      "shape": "rect",
+      "width": 96,
+      "x": 96,
+      "y": 64
+    }
+  ],
+  "schema_version": "1.0"
+}

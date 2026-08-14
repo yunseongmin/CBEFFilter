@@ -1,0 +1,3 @@
+frame_arena_contract: PASS
+REPORT: .omo/evidence/ticket-05-frame-arena.json
+TRACE: .omo/evidence/ticket-05-frame-arena.jsonl

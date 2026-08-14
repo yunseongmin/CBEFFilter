@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "acquire_count": 24,
+  "complete_count": 3,
+  "cancel_count": 1,
+  "reused_after_completion": true,
+  "max_active_slots": 16,
+  "reused_slot_while_active": false,
+  "allocations_total": 16,
+  "peak_in_flight_bytes": 35720064,
+  "failure_cleanup": true,
+  "failure": ""
+}

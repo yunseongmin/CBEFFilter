@@ -1,0 +1,4 @@
+COMMAND: make -B test-v2-compile
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/core/RenderCore.cpp" -o "build/obj/core/RenderCore.o"
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core "tests/typed_compile_contract.cpp" "build/obj/core/RenderCore.o" -o "build/tests/typed_compile_contract"
+"build/tests/typed_compile_contract"

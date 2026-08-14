@@ -1,0 +1,7 @@
+build/CBEFFilmEffects.ofx.bundle/Contents/MacOS/CBEFFilmEffects.ofx:          Mach-O 64-bit bundle arm64
+build/CBEFFilmEffects.ofx.bundle/Contents/Resources/CBEFFilmEffects.metallib: MetalLib executable (MacOS), version 1.2.9
+build/CBEFFilmEffects.ofx.bundle/Contents/Info.plist
+build/CBEFFilmEffects.ofx.bundle/Contents/MacOS/CBEFFilmEffects.ofx
+build/CBEFFilmEffects.ofx.bundle/Contents/Resources/CBEFFilmEffects.metallib
+build/CBEFFilmEffects.ofx.bundle/Contents/Resources/THIRD_PARTY_NOTICES.md
+build/CBEFFilmEffects.ofx.bundle/Contents/_CodeSignature/CodeResources

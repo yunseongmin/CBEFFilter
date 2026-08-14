@@ -1,0 +1,31 @@
+=== timestamp ===
+Tue Aug 11 19:31:53 UTC 2026
+=== harness rebuild ===
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/core/RenderCore.cpp" -o "build/obj/core/RenderCore.o"
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/metal/MetalRenderBackend.mm" -o "build/obj/metal/MetalRenderBackend.o"
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -DCBEF_ENABLE_METAL_TEST -Isrc/core "tests/m7_performance_benchmark.mm" "build/obj/core/RenderCore.o" "build/obj/metal/MetalRenderBackend.o" \
+		-o "build/tests/m7_performance_benchmark" -framework Foundation -framework Metal
+make_exit=0
+=== usage ===
+usage: m7_performance_benchmark [--output-dir DIR] [--bundle PATH]
+usage_exit=2 (expected 2)
+=== Makefile target ===
+18:M7_BENCHMARK_BINARY := build/tests/m7_performance_benchmark
+19:M7_OUTPUT_DIR ?= .omo/evidence/m7-performance-$(shell date +%Y%m%d)
+36:.PHONY: all build test test-m1 test-m1-cpu test-m2 test-m3 test-m3-cpu test-m4 test-m4-cpu test-m5 test-m5-cpu test-m6 test-m6-cpu benchmark-m7 install uninstall rebuild clean verify-sdk
+120:$(M7_BENCHMARK_BINARY): tests/m7_performance_benchmark.mm $(CORE_OBJECT) $(METAL_OBJECT)
+156:# Runs the complete M7 GPU benchmark and writes m7-performance.json/.md under M7_OUTPUT_DIR.
+158:benchmark-m7: $(M7_BENCHMARK_BINARY) $(BINARY)
+159:	@mkdir -p "$(M7_OUTPUT_DIR)"
+160:	CBEF_M7_OUTPUT_DIR="$(M7_OUTPUT_DIR)" CBEF_M7_BUNDLE="$(BINARY)" "$(M7_BENCHMARK_BINARY)"
+=== artifact validation ===
+artifact_json_cases=10
+artifact_samples_per_case=10
+grain_measured_frames=3..12; warmups documented as 0..2
+all_pass= False
+=== evidence files ===
+-rw-r--r--@ 1 younseongmin  staff     7 Aug 12 04:30 .omo/evidence/m7-performance-20260812/benchmark-exit.txt
+-rw-r--r--@ 1 younseongmin  staff   677 Aug 12 04:28 .omo/evidence/m7-performance-20260812/harness-build.log
+-rw-r--r--@ 1 younseongmin  staff  5590 Aug 12 04:30 .omo/evidence/m7-performance-20260812/m7-performance.json
+-rw-r--r--@ 1 younseongmin  staff  1842 Aug 12 04:30 .omo/evidence/m7-performance-20260812/m7-performance.md
+verification_exit=0

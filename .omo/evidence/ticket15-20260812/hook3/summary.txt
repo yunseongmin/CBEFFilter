@@ -1,0 +1,12 @@
+timestamp_utc=2026-08-12T07:47:32Z
+field	exit=0	bytes=784
+m5	exit=0	bytes=1372
+build_abi	exit=0	bytes=4871
+fixture_generate	exit=0	bytes=93
+fixture_test	exit=0	bytes=101
+build_abi.log	b9c7cb415b2de80dbbd6ed853e1292a5ee9b112e877dde46acd69a15fe2cd729
+field.log	daf3b13f585b570f8a27fff7735a4f9b15304a6796d5bba9caed87798ebbb35e
+fixture_generate.log	6e39b1ec9352f04b43804c4cf3427fb4a8fa766a6cd7a958d67703f7537ebe46
+fixture_test.log	de037b6a2d80b1aab0a928aadb2e5c2c45373846763418cc98d0c1cc1739dfae
+m5.log	77afee105bb33334962f890bc1bd2c226297988a9baf9b8cb8f23812be24128e
+all_hook3_artifacts_nonempty=1

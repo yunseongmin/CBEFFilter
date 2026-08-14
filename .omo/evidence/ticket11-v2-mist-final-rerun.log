@@ -1,0 +1,10 @@
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/core/RenderCore.cpp" -o "build/obj/core/RenderCore.o"
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/metal/MetalRenderBackend.mm" -o "build/obj/metal/MetalRenderBackend.o"
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/metal/FrameArena.mm" -o "build/obj/metal/FrameArena.o"
+xcrun -sdk macosx metal -c "src/metal/kernels/CBEFFilmEffects.metal" -o "build/obj/metal/CBEFFilmEffects.air"
+xcrun -sdk macosx metallib "build/obj/metal/CBEFFilmEffects.air" -o "build/CBEFFilmEffects.ofx.bundle/Contents/Resources/CBEFFilmEffects.metallib"
+cp "build/CBEFFilmEffects.ofx.bundle/Contents/Resources/CBEFFilmEffects.metallib" "build/tests/CBEFFilmEffects.metallib"
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -DCBEF_ENABLE_METAL_TEST -Isrc/core "tests/mist_v2_metal_ticket11.mm" "build/obj/core/RenderCore.o" "build/obj/metal/MetalRenderBackend.o" "build/obj/metal/FrameArena.o" \
+		-o "build/tests/mist_v2_metal_ticket11" -framework Foundation -framework Metal
+"build/tests/mist_v2_metal_ticket11"
+mist_v2_metal_ticket11: PASS

@@ -1,0 +1,4 @@
+scenario=headless_render_contract-cpu-build-and-run
+build_exit=0
+headless_render_contract: PASS (CPU M1 contract)
+run_exit=0

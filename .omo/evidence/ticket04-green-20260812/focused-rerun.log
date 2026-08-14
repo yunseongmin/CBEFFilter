@@ -1,0 +1,13 @@
+"build/tests/typed_compile_contract"
+"build/tests/headless_render_contract"
+headless_render_contract: PASS (CPU + Metal M1 contract)
+"build/tests/halation_render_contract"
+halation_render_contract: PASS (CPU + Metal M2 Halation)
+"build/tests/film_grain_render_contract"
+film_grain_render_contract: PASS
+"build/tests/mist_render_contract"
+mist_render_contract: PASS
+"build/tests/optical_blur_render_contract"
+optical_blur_render_contract: PASS (CPU + Metal M5 Optical Blur)
+"build/tests/lens_reflections_render_contract"
+lens_reflections_render_contract: PASS (CPU + Metal M6 Lens Reflections)

@@ -1,0 +1,6 @@
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/core/RenderCore.cpp" -o "build/obj/core/RenderCore.o"
+src/core/RenderCore.cpp:725:46: error: use of undeclared identifier 'halationIndex'
+  725 |         const OpticalSample& sample = source[halationIndex(bounds, sample_x, sample_y)];
+      |                                              ^~~~~~~~~~~~~
+1 error generated.
+make: *** [build/obj/core/RenderCore.o] Error 1

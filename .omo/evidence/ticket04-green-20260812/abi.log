@@ -1,0 +1,3 @@
+xcrun clang++ -Iinclude -Ibuild/openfx-sdk/OpenFX-1.4/include -Ibuild/openfx-sdk/Support/include -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 "tests/plugin_abi_probe.cpp" -o "build/tests/plugin_abi_probe"
+"build/tests/plugin_abi_probe" "build/CBEFFilmEffects.ofx.bundle/Contents/MacOS/CBEFFilmEffects.ofx"
+plugin_abi_probe: PASS (five stable OpenFX effect descriptors + bundled Metal library)

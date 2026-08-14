@@ -1,0 +1,22 @@
+VERIFY_DATE=2026-08-11T18:55:00Z
+PWD=/Users/younseongmin/Documents/CBEF/DaVinciFilmPlugin
+
+-- ticket status --
+7:**Status:** resolved
+9:- [x] Optical Blur의 모든 파라미터, 세 preset, 기본값, Custom·Reset과 Output View가 Effect Definition과 일치합니다.
+10:- [x] regular polygon과 circle 보간, Rotation, horizontal/vertical radius와 최소 4×4 subpixel coverage로 unit-sum aperture kernel을 생성합니다.
+11:- [x] base aperture blur와 pivot 0.72·1-stop knee의 Highlight Response가 명세 순서로 합성됩니다.
+12:- [x] Blur 0과 Mix 0 Final은 exact identity이고 Blurred Image와 Highlight Component가 각각 정의된 처리 단계의 값을 표시합니다.
+13:- [x] kernel sum·centroid·constant image·second-moment anamorphism·analytic mask IoU·Highlight Response 단조 조건을 통과합니다.
+14:- [x] frame edge와 1080p/4K PSNR·반경·energy, alpha와 HDR focused fixture를 통과합니다.
+15:- [x] CPU·Metal parity와 affected build가 성공하며 depth map이나 AI 처리를 추가하지 않습니다.
+
+-- focused test --
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/core/RenderCore.cpp" -o "build/obj/core/RenderCore.o"
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/metal/MetalRenderBackend.mm" -o "build/obj/metal/MetalRenderBackend.o"
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -DCBEF_ENABLE_METAL_TEST -Isrc/core "tests/optical_blur_render_contract.mm" "build/obj/core/RenderCore.o" "build/obj/metal/MetalRenderBackend.o" \
+		-o "build/tests/optical_blur_render_contract" -framework Foundation -framework Metal
+"build/tests/optical_blur_render_contract"
+optical_blur_render_contract: PASS (CPU + Metal M5 Optical Blur)
+
+COMMAND_EXIT=0

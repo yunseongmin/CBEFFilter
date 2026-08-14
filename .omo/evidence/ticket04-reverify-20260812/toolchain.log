@@ -1,0 +1,5 @@
+scenario=xcrun-toolchain-probe
+metal=xcrun: error: unable to find utility "metal", not a developer tool or in PATH
+exit=72
+metallib=xcrun: error: unable to find utility "metallib", not a developer tool or in PATH
+exit=72

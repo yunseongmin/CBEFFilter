@@ -1,0 +1,5 @@
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core "tests/mist_v2_cpu_contract.cpp" "build/obj/core/RenderCore.o" -o "build/tests/mist_v2_cpu_contract"
+"build/tests/mist_v2_cpu_contract"
+grade glow=0.038760,0.156881,0.359299,0.630000 veil=0.795518,1.743902,2.771876,3.841915 radius=3.993141,3.638250,3.325665,3.012468
+mist_v2_cpu_contract: generic internal Grade steps must increase Glow and Veil energy and Veil radius monotonically
+make: *** [test-v2-mist-cpu] Error 1

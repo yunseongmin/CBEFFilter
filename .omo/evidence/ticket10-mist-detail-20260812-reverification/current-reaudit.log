@@ -1,0 +1,7 @@
+--- focused CPU ---
+mist_v2_cpu_contract: PASS (CPU reference only; Metal parity is ticket 11)
+
+--- legacy M4 ---
+mist_render_contract: CPU and Metal Mist must agree within 2e-4
+make: *** [test-m4-cpu] Error 1
+m4_exit=2

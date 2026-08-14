@@ -1,0 +1,57 @@
+=== timestamp ===
+Tue Aug 11 19:32:27 UTC 2026
+=== forced harness rebuild ===
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/core/RenderCore.cpp" -o "build/obj/core/RenderCore.o"
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/metal/MetalRenderBackend.mm" -o "build/obj/metal/MetalRenderBackend.o"
+src/metal/MetalRenderBackend.mm:1812:67: error: no viable conversion from 'std::array<GrainLatticeInfo, 3>' to 'std::int32_t' (aka 'int')
+ 1812 |         const GrainRenderArguments render_arguments = {arguments, lattice_info};
+      |                                                                   ^~~~~~~~~~~~
+src/metal/MetalRenderBackend.mm:1812:79: warning: missing field 'origin_y' initializer [-Wmissing-field-initializers]
+ 1812 |         const GrainRenderArguments render_arguments = {arguments, lattice_info};
+      |                                                                               ^
+src/metal/MetalRenderBackend.mm:1812:67: warning: suggest braces around initialization of subobject [-Wmissing-braces]
+ 1812 |         const GrainRenderArguments render_arguments = {arguments, lattice_info};
+      |                                                                   ^~~~~~~~~~~~
+      |                                                                   {           }
+src/metal/MetalRenderBackend.mm:1812:67: warning: suggest braces around initialization of subobject [-Wmissing-braces]
+ 1812 |         const GrainRenderArguments render_arguments = {arguments, lattice_info};
+      |                                                                   ^~~~~~~~~~~~
+      |                                                                   {           }
+3 warnings and 1 error generated.
+make: *** [build/obj/metal/MetalRenderBackend.o] Error 1
+build_exit=2
+=== linked frameworks ===
+	/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation (compatibility version 300.0.0, current version 5026.5.4)
+	/System/Library/Frameworks/Metal.framework/Versions/A/Metal (compatibility version 1.0.0, current version 373.2.0)
+otool_exit=0
+=== structural contract checks ===
+30:constexpr std::size_t kWarmupCount = 3U;
+31:constexpr std::size_t kMeasuredCount = 10U;
+51:    std::uint64_t temporary_peak_bytes = 0;
+200:    return FrameSurface{MemoryKind::Metal,
+256:    if (submission.kind != SubmissionKind::Enqueued) {
+261:        *allocated_peak = std::max(*allocated_peak, static_cast<std::uint64_t>(queue.device.currentAllocatedSize));
+269:    [sentinel waitUntilCompleted];
+299:    result->baseline_bytes = static_cast<std::uint64_t>(device.currentAllocatedSize);
+310:        result->peak_bytes = std::max(result->peak_bytes, static_cast<std::uint64_t>(device.currentAllocatedSize));
+324:        result->peak_bytes = std::max(result->peak_bytes, static_cast<std::uint64_t>(device.currentAllocatedSize));
+330:    result->steady_bytes = static_cast<std::uint64_t>(device.currentAllocatedSize);
+331:    result->temporary_peak_bytes = result->peak_bytes > result->baseline_bytes ?
+342:    result->temporary_pass = result->temporary_peak_bytes < kTemporaryLimit;
+369:        output << "], \"frame_times\": [";
+379:               << ", \"temporary_peak_bytes\": " << item.temporary_peak_bytes
+411:               << item.temporary_peak_bytes << " B | " << item.steady_delta_bytes << " B | "
+=== expected failure: missing bundle must not run CPU ===
+m7_performance_benchmark: FAIL
+JSON: .omo/evidence/m7-performance-20260812/negative-run-2/m7-performance.json
+Markdown: .omo/evidence/m7-performance-20260812/negative-run-2/m7-performance.md
+negative_exit=1 (expected 1)
+=== negative JSON assertions ===
+negative_json=valid
+cpu_fallback_rejected=observed
+failure_reason= bundle binary is missing; build the bundle before running M7 benchmark
+=== evidence hashes ===
+bf7a2d0cce6be407e7e54ea6341cf01800db1da81baa0723c02c51eb522d8148  .omo/evidence/m7-performance-20260812/subagent-stop-verification-2.log
+af8949c4355ae12f32bd42ce4e73c60353b0880e1498432790afa50fb0381669  .omo/evidence/m7-performance-20260812/negative-run-2/m7-performance.json
+bdac0712615b66b7ea2581078cb8127c6ab4a3614a42a96a3b1e2be37183bc43  .omo/evidence/m7-performance-20260812/negative-run-2/m7-performance.md
+verification_exit=0

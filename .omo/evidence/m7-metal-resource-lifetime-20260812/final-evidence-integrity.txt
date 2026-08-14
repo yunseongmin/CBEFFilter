@@ -1,0 +1,4 @@
+manifest_nonempty=PASS
+build_log_nonempty=PASS
+tests_log_nonempty=PASS
+evidence_path=.omo/evidence/m7-metal-resource-lifetime-20260812/final-verification.md

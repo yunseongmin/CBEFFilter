@@ -1,0 +1,46 @@
+
+build/CBEFFilmEffects.ofx.bundle/Contents/Resources/CBEFFilmEffects.metallib:	file format metallib
+
+SYMBOL TABLE:
+000000000000005c g     F FUNCTION_LIST cbef_grain_lattice_generate
+00000000000000ed g     F FUNCTION_LIST cbef_grain_lattice_blur
+000000000000017a g     F FUNCTION_LIST cbef_grain_final
+0000000000000200 g     F FUNCTION_LIST cbef_mist_copy
+0000000000000284 g     F FUNCTION_LIST cbef_clear_float4
+000000000000030b g     F FUNCTION_LIST cbef_mist_prepare
+0000000000000392 g     F FUNCTION_LIST cbef_mist_prepare_pyramid
+0000000000000421 g     F FUNCTION_LIST cbef_mist_horizontal
+00000000000004ab g     F FUNCTION_LIST cbef_mist_horizontal_linear
+000000000000053c g     F FUNCTION_LIST cbef_mist_vertical
+00000000000005c4 g     F FUNCTION_LIST cbef_mist_vertical_linear
+0000000000000653 g     F FUNCTION_LIST cbef_mist_finalize
+00000000000006db g     F FUNCTION_LIST cbef_mist_finalize_pyramid
+000000000000076b g     F FUNCTION_LIST cbef_optical_copy
+00000000000007f2 g     F FUNCTION_LIST cbef_optical_prepare
+000000000000087c g     F FUNCTION_LIST cbef_optical_downsample
+0000000000000909 g     F FUNCTION_LIST cbef_optical_render
+0000000000000992 g     F FUNCTION_LIST cbef_lens_copy
+0000000000000a16 g     F FUNCTION_LIST cbef_lens_prepare_v2
+0000000000000aa0 g     F FUNCTION_LIST cbef_lens_morphology_v2
+0000000000000b2d g     F FUNCTION_LIST cbef_lens_half_source_v2
+0000000000000bbb g     F FUNCTION_LIST cbef_lens_tiles_v2
+0000000000000c43 g     F FUNCTION_LIST cbef_lens_select_groups_v2
+0000000000000cd3 g     F FUNCTION_LIST cbef_lens_select_finalize_v2
+0000000000000d65 g     F FUNCTION_LIST cbef_lens_denominators_v2
+0000000000000df4 g     F FUNCTION_LIST cbef_lens_finalize_v2
+0000000000000e7f g     F FUNCTION_LIST cbef_lens_upscale_v2
+0000000000000f09 g     F FUNCTION_LIST cbef_copy_v2
+0000000000000f8b g     F FUNCTION_LIST cbef_halation_prepare
+0000000000001016 g     F FUNCTION_LIST cbef_halation_horizontal
+00000000000010a4 g     F FUNCTION_LIST cbef_halation_horizontal_linear
+0000000000001139 g     F FUNCTION_LIST cbef_halation_horizontal_multi_buffer
+00000000000011d4 g     F FUNCTION_LIST cbef_halation_vertical
+0000000000001260 g     F FUNCTION_LIST cbef_halation_vertical_linear
+00000000000012f3 g     F FUNCTION_LIST cbef_halation_vertical_final_buffer
+000000000000138c g     F FUNCTION_LIST cbef_halation_matte
+0000000000001415 g     F FUNCTION_LIST cbef_halation_pyramid_prepare_rg32
+00000000000014ad g     F FUNCTION_LIST cbef_halation_pyramid_horizontal_rg32
+0000000000001548 g     F FUNCTION_LIST cbef_halation_pyramid_vertical_rg32
+00000000000015e1 g     F FUNCTION_LIST cbef_halation_pyramid_composite
+0000000000001676 g     F FUNCTION_LIST cbef_halation_finalize
+0000000000001702 g     F FUNCTION_LIST cbef_grain_reference_v2

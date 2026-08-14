@@ -1,0 +1,7 @@
+Moved the legacy v1 backup outside the active OpenFX scan root to /var/folders/2g/f61j4xlj4zv8_y11dwsf70w00000gn/T//cbef-package-test.JDb8dq/OFX/CBEFBackups/CBEFFilmEffects-v1-backup.ofx.bundle
+Installed CBEF Film Effects to /var/folders/2g/f61j4xlj4zv8_y11dwsf70w00000gn/T//cbef-package-test.JDb8dq/OFX/Plugins/CBEFFilmEffects.ofx.bundle
+Moved the legacy v1 backup outside the active OpenFX scan root to /var/folders/2g/f61j4xlj4zv8_y11dwsf70w00000gn/T//cbef-package-test.JDb8dq/OFX/CBEFBackups/CBEFFilmEffects-v1-legacy-1.ofx.bundle
+Installed CBEF Film Effects to /var/folders/2g/f61j4xlj4zv8_y11dwsf70w00000gn/T//cbef-package-test.JDb8dq/OFX/Plugins/CBEFFilmEffects.ofx.bundle
+Backed up CBEF Film Effects v1 to /var/folders/2g/f61j4xlj4zv8_y11dwsf70w00000gn/T//cbef-package-test.JDb8dq/OFX/CBEFBackups/CBEFFilmEffects-v1-backup.ofx.bundle
+Installed CBEF Film Effects to /var/folders/2g/f61j4xlj4zv8_y11dwsf70w00000gn/T//cbef-package-test.JDb8dq/OFX/Plugins/CBEFFilmEffects.ofx.bundle
+package_install_contract: PASS (external v1 backup + final bundle signature)

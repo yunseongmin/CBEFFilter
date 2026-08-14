@@ -1,0 +1,4 @@
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core "tests/mist_v2_cpu_contract.cpp" "build/obj/core/RenderCore.o" -o "build/tests/mist_v2_cpu_contract"
+"build/tests/mist_v2_cpu_contract"
+mist_v2_cpu_contract: Mist Filter Family must use Generic Black and Generic White
+make: *** [test-v2-mist-cpu] Error 1

@@ -1,0 +1,168 @@
+Wed Aug 12 07:04:35 UTC 2026
+COMMAND: DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer make -B build test-v2-mist-metal test-m4
+xcrun clang++ -Iinclude -Ibuild/openfx-sdk/OpenFX-1.4/include -Ibuild/openfx-sdk/Support/include -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -c "src/ofx/CBEFFilmEffects.cpp" -o "build/obj/CBEFFilmEffects.o"
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/core/RenderCore.cpp" -o "build/obj/core/RenderCore.o"
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/metal/MetalRenderBackend.mm" -o "build/obj/metal/MetalRenderBackend.o"
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/metal/FrameArena.mm" -o "build/obj/metal/FrameArena.o"
+xcrun clang++ -Iinclude -Ibuild/openfx-sdk/OpenFX-1.4/include -Ibuild/openfx-sdk/Support/include -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -w -c "build/openfx-sdk/Support/Library/ofxsCore.cpp" -o "build/obj/openfx/ofxsCore.o"
+xcrun clang++ -Iinclude -Ibuild/openfx-sdk/OpenFX-1.4/include -Ibuild/openfx-sdk/Support/include -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -w -c "build/openfx-sdk/Support/Library/ofxsImageEffect.cpp" -o "build/obj/openfx/ofxsImageEffect.o"
+xcrun clang++ -Iinclude -Ibuild/openfx-sdk/OpenFX-1.4/include -Ibuild/openfx-sdk/Support/include -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -w -c "build/openfx-sdk/Support/Library/ofxsInteract.cpp" -o "build/obj/openfx/ofxsInteract.o"
+xcrun clang++ -Iinclude -Ibuild/openfx-sdk/OpenFX-1.4/include -Ibuild/openfx-sdk/Support/include -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -w -c "build/openfx-sdk/Support/Library/ofxsLog.cpp" -o "build/obj/openfx/ofxsLog.o"
+xcrun clang++ -Iinclude -Ibuild/openfx-sdk/OpenFX-1.4/include -Ibuild/openfx-sdk/Support/include -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -w -c "build/openfx-sdk/Support/Library/ofxsMultiThread.cpp" -o "build/obj/openfx/ofxsMultiThread.o"
+xcrun clang++ -Iinclude -Ibuild/openfx-sdk/OpenFX-1.4/include -Ibuild/openfx-sdk/Support/include -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -w -c "build/openfx-sdk/Support/Library/ofxsParams.cpp" -o "build/obj/openfx/ofxsParams.o"
+xcrun clang++ -Iinclude -Ibuild/openfx-sdk/OpenFX-1.4/include -Ibuild/openfx-sdk/Support/include -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -w -c "build/openfx-sdk/Support/Library/ofxsProperty.cpp" -o "build/obj/openfx/ofxsProperty.o"
+xcrun clang++ -Iinclude -Ibuild/openfx-sdk/OpenFX-1.4/include -Ibuild/openfx-sdk/Support/include -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -w -c "build/openfx-sdk/Support/Library/ofxsPropertyValidation.cpp" -o "build/obj/openfx/ofxsPropertyValidation.o"
+xcrun -sdk macosx metal -c "src/metal/kernels/CBEFFilmEffects.metal" -o "build/obj/metal/CBEFFilmEffects.air"
+xcrun -sdk macosx metallib "build/obj/metal/CBEFFilmEffects.air" -o "build/CBEFFilmEffects.ofx.bundle/Contents/Resources/CBEFFilmEffects.metallib"
+xcrun clang++ build/obj/CBEFFilmEffects.o build/obj/core/RenderCore.o build/obj/metal/MetalRenderBackend.o build/obj/metal/FrameArena.o build/obj/openfx/ofxsCore.o build/obj/openfx/ofxsImageEffect.o build/obj/openfx/ofxsInteract.o build/obj/openfx/ofxsLog.o build/obj/openfx/ofxsMultiThread.o build/obj/openfx/ofxsParams.o build/obj/openfx/ofxsProperty.o build/obj/openfx/ofxsPropertyValidation.o -o "build/CBEFFilmEffects.ofx.bundle/Contents/MacOS/CBEFFilmEffects.ofx" -bundle -arch arm64 -Wl,-dead_strip -framework Foundation -framework Metal
+cp vendor/openfx/THIRD_PARTY_NOTICES.md "build/CBEFFilmEffects.ofx.bundle/Contents/Resources/THIRD_PARTY_NOTICES.md"
+/usr/libexec/PlistBuddy -c 'Clear dict' "build/CBEFFilmEffects.ofx.bundle/Contents/Info.plist" 2>/dev/null || true
+Initializing Plist...
+cp "build/CBEFFilmEffects.ofx.bundle/Contents/Resources/CBEFFilmEffects.metallib" "build/tests/CBEFFilmEffects.metallib"
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -DCBEF_ENABLE_METAL_TEST -Isrc/core "tests/mist_v2_metal_ticket11.mm" "build/obj/core/RenderCore.o" "build/obj/metal/MetalRenderBackend.o" "build/obj/metal/FrameArena.o" \
+		-o "build/tests/mist_v2_metal_ticket11" -framework Foundation -framework Metal
+"build/tests/mist_v2_metal_ticket11"
+mist_v2_metal_ticket11: PASS
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -DCBEF_ENABLE_METAL_TEST -Isrc/core "tests/mist_render_contract.mm" "build/obj/core/RenderCore.o" "build/obj/metal/MetalRenderBackend.o" "build/obj/metal/FrameArena.o" \
+		-o "build/tests/mist_render_contract" -framework Foundation -framework Metal
+"build/tests/mist_render_contract"
+mist_render_contract: PASS
+Wed Aug 12 07:05:01 UTC 2026
+COMMAND: DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer M7_OUTPUT_DIR=.omo/evidence/ticket11-mist-metal-final/cleanup-benchmark make benchmark-mist
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/core/RenderCore.cpp" -o "build/obj/core/RenderCore.o"
+src/core/RenderCore.cpp:2069:9: warning: missing field 'film_resolution' initializer [-Wmissing-field-initializers]
+ 2069 |         };
+      |         ^
+src/core/RenderCore.cpp:46:47: warning: unused variable 'kGrainStockRecordMtf' [-Wunused-const-variable]
+   46 | constexpr std::array<std::array<float, 3>, 3> kGrainStockRecordMtf = {
+      |                                               ^~~~~~~~~~~~~~~~~~~~
+src/core/RenderCore.cpp:48:47: warning: unused variable 'kGrainStockRecordRho' [-Wunused-const-variable]
+   48 | constexpr std::array<std::array<float, 3>, 3> kGrainStockRecordRho = {
+      |                                               ^~~~~~~~~~~~~~~~~~~~
+src/core/RenderCore.cpp:50:47: warning: unused variable 'kGrainPopulationWeights' [-Wunused-const-variable]
+   50 | constexpr std::array<std::array<float, 3>, 3> kGrainPopulationWeights = {
+      |                                               ^~~~~~~~~~~~~~~~~~~~~~~
+src/core/RenderCore.cpp:52:32: warning: unused variable 'kGrainPopulationDiameter' [-Wunused-const-variable]
+   52 | constexpr std::array<float, 3> kGrainPopulationDiameter = {0.66F, 1.00F, 1.62F};
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~
+5 warnings generated.
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -DCBEF_ENABLE_METAL_TEST -Isrc/core "tests/m7_performance_benchmark.mm" "build/obj/core/RenderCore.o" "build/obj/metal/MetalRenderBackend.o" "build/obj/metal/FrameArena.o" \
+		-o "build/tests/m7_performance_benchmark" -framework Foundation -framework Metal
+xcrun clang++ build/obj/CBEFFilmEffects.o build/obj/core/RenderCore.o build/obj/metal/MetalRenderBackend.o build/obj/metal/FrameArena.o build/obj/openfx/ofxsCore.o build/obj/openfx/ofxsImageEffect.o build/obj/openfx/ofxsInteract.o build/obj/openfx/ofxsLog.o build/obj/openfx/ofxsMultiThread.o build/obj/openfx/ofxsParams.o build/obj/openfx/ofxsProperty.o build/obj/openfx/ofxsPropertyValidation.o -o "build/CBEFFilmEffects.ofx.bundle/Contents/MacOS/CBEFFilmEffects.ofx" -bundle -arch arm64 -Wl,-dead_strip -framework Foundation -framework Metal
+cp vendor/openfx/THIRD_PARTY_NOTICES.md "build/CBEFFilmEffects.ofx.bundle/Contents/Resources/THIRD_PARTY_NOTICES.md"
+/usr/libexec/PlistBuddy -c 'Clear dict' "build/CBEFFilmEffects.ofx.bundle/Contents/Info.plist" 2>/dev/null || true
+Initializing Plist...
+CBEF_M7_EFFECT_FILTER=mist CBEF_M7_OUTPUT_DIR=".omo/evidence/ticket11-mist-metal-final/cleanup-benchmark" CBEF_M7_BUNDLE="build/CBEFFilmEffects.ofx.bundle/Contents/MacOS/CBEFFilmEffects.ofx" "build/tests/m7_performance_benchmark"
+m7: begin Mist Diffusion 1920x1080
+m7: begin Mist Diffusion 3840x2160
+m7_performance_benchmark: FAIL
+JSON: .omo/evidence/ticket11-mist-metal-final/cleanup-benchmark/m7-performance.json
+Markdown: .omo/evidence/ticket11-mist-metal-final/cleanup-benchmark/m7-performance.md
+make: *** [benchmark-mist] Error 1
+Wed Aug 12 07:05:26 UTC 2026
+COMMAND: DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer CBEF_M7_EFFECT_FILTER=mist M7_OUTPUT_DIR=.omo/evidence/ticket11-mist-metal-final/cleanup-benchmark-rerun make benchmark-mist
+CBEF_M7_EFFECT_FILTER=mist CBEF_M7_OUTPUT_DIR=".omo/evidence/ticket11-mist-metal-final/cleanup-benchmark-rerun" CBEF_M7_BUNDLE="build/CBEFFilmEffects.ofx.bundle/Contents/MacOS/CBEFFilmEffects.ofx" "build/tests/m7_performance_benchmark"
+m7: begin Mist Diffusion 1920x1080
+m7: begin Mist Diffusion 3840x2160
+m7_performance_benchmark: FAIL
+JSON: .omo/evidence/ticket11-mist-metal-final/cleanup-benchmark-rerun/m7-performance.json
+Markdown: .omo/evidence/ticket11-mist-metal-final/cleanup-benchmark-rerun/m7-performance.md
+make: *** [benchmark-mist] Error 1
+Wed Aug 12 07:06:23 UTC 2026
+COMMAND: DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer M7_OUTPUT_DIR=.omo/evidence/ticket11-mist-metal-final/cleanup-benchmark-after-load make benchmark-mist
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/core/RenderCore.cpp" -o "build/obj/core/RenderCore.o"
+src/core/RenderCore.cpp:2086:9: warning: missing field 'film_resolution' initializer [-Wmissing-field-initializers]
+ 2086 |         };
+      |         ^
+src/core/RenderCore.cpp:46:47: warning: unused variable 'kGrainStockRecordMtf' [-Wunused-const-variable]
+   46 | constexpr std::array<std::array<float, 3>, 3> kGrainStockRecordMtf = {
+      |                                               ^~~~~~~~~~~~~~~~~~~~
+src/core/RenderCore.cpp:48:47: warning: unused variable 'kGrainStockRecordRho' [-Wunused-const-variable]
+   48 | constexpr std::array<std::array<float, 3>, 3> kGrainStockRecordRho = {
+      |                                               ^~~~~~~~~~~~~~~~~~~~
+src/core/RenderCore.cpp:50:47: warning: unused variable 'kGrainPopulationWeights' [-Wunused-const-variable]
+   50 | constexpr std::array<std::array<float, 3>, 3> kGrainPopulationWeights = {
+      |                                               ^~~~~~~~~~~~~~~~~~~~~~~
+src/core/RenderCore.cpp:52:32: warning: unused variable 'kGrainPopulationDiameter' [-Wunused-const-variable]
+   52 | constexpr std::array<float, 3> kGrainPopulationDiameter = {0.66F, 1.00F, 1.62F};
+      |                                ^~~~~~~~~~~~~~~~~~~~~~~~
+5 warnings generated.
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -DCBEF_ENABLE_METAL_TEST -Isrc/core "tests/m7_performance_benchmark.mm" "build/obj/core/RenderCore.o" "build/obj/metal/MetalRenderBackend.o" "build/obj/metal/FrameArena.o" \
+		-o "build/tests/m7_performance_benchmark" -framework Foundation -framework Metal
+xcrun clang++ build/obj/CBEFFilmEffects.o build/obj/core/RenderCore.o build/obj/metal/MetalRenderBackend.o build/obj/metal/FrameArena.o build/obj/openfx/ofxsCore.o build/obj/openfx/ofxsImageEffect.o build/obj/openfx/ofxsInteract.o build/obj/openfx/ofxsLog.o build/obj/openfx/ofxsMultiThread.o build/obj/openfx/ofxsParams.o build/obj/openfx/ofxsProperty.o build/obj/openfx/ofxsPropertyValidation.o -o "build/CBEFFilmEffects.ofx.bundle/Contents/MacOS/CBEFFilmEffects.ofx" -bundle -arch arm64 -Wl,-dead_strip -framework Foundation -framework Metal
+cp vendor/openfx/THIRD_PARTY_NOTICES.md "build/CBEFFilmEffects.ofx.bundle/Contents/Resources/THIRD_PARTY_NOTICES.md"
+/usr/libexec/PlistBuddy -c 'Clear dict' "build/CBEFFilmEffects.ofx.bundle/Contents/Info.plist" 2>/dev/null || true
+Initializing Plist...
+CBEF_M7_EFFECT_FILTER=mist CBEF_M7_OUTPUT_DIR=".omo/evidence/ticket11-mist-metal-final/cleanup-benchmark-after-load" CBEF_M7_BUNDLE="build/CBEFFilmEffects.ofx.bundle/Contents/MacOS/CBEFFilmEffects.ofx" "build/tests/m7_performance_benchmark"
+m7: begin Mist Diffusion 1920x1080
+m7: begin Mist Diffusion 3840x2160
+m7_performance_benchmark: FAIL
+JSON: .omo/evidence/ticket11-mist-metal-final/cleanup-benchmark-after-load/m7-performance.json
+Markdown: .omo/evidence/ticket11-mist-metal-final/cleanup-benchmark-after-load/m7-performance.md
+make: *** [benchmark-mist] Error 1
+H1/H3 evidence
+dual references:
+live metallib names:
+cbef_mist_prepare_pyramid
+cbef_mist_horizontal
+cbef_mist_vertical
+cbef_mist_finalize_pyramid
+bundle hashes:
+edee7e8eebcbeacdcd1f2f4cea49184b65a484c4fa925dc98df4541d57528306  build/CBEFFilmEffects.ofx.bundle/Contents/MacOS/CBEFFilmEffects.ofx
+003c03189d7a9db7c44364d1d86d48ac267c8d82dde70a78ffbb8cdc986eafcc  build/CBEFFilmEffects.ofx.bundle/Contents/Resources/CBEFFilmEffects.metallib
+003c03189d7a9db7c44364d1d86d48ac267c8d82dde70a78ffbb8cdc986eafcc  build/tests/CBEFFilmEffects.metallib
+benchmark command target:
+mkdir -p "build/tests/"
+cp "build/CBEFFilmEffects.ofx.bundle/Contents/Resources/CBEFFilmEffects.metallib" "build/tests/CBEFFilmEffects.metallib"
+mkdir -p "build/tests/"
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -DCBEF_ENABLE_METAL_TEST -Isrc/core "tests/m7_performance_benchmark.mm" "build/obj/core/RenderCore.o" "build/obj/metal/MetalRenderBackend.o" "build/obj/metal/FrameArena.o" \
+		-o "build/tests/m7_performance_benchmark" -framework Foundation -framework Metal
+test -f "/Library/Application Support/Blackmagic Design/DaVinci Resolve/Developer/OpenFX/OpenFX-1.4/include/ofxCore.h" || { echo "OpenFX SDK headers were not found under: /Library/Application Support/Blackmagic Design/DaVinci Resolve/Developer/OpenFX" >&2; exit 2; }
+test -f "/Library/Application Support/Blackmagic Design/DaVinci Resolve/Developer/OpenFX/Support/Library/ofxsImageEffect.cpp" || { echo "OpenFX SDK support sources were not found under: /Library/Application Support/Blackmagic Design/DaVinci Resolve/Developer/OpenFX" >&2; exit 2; }
+mkdir -p "build/"
+test -L "build/openfx-sdk" || ln -s "/Library/Application Support/Blackmagic Design/DaVinci Resolve/Developer/OpenFX" "build/openfx-sdk"
+mkdir -p "build/CBEFFilmEffects.ofx.bundle/Contents/MacOS/" "build/CBEFFilmEffects.ofx.bundle/Contents/Resources/"
+xcrun clang++ build/obj/CBEFFilmEffects.o build/obj/core/RenderCore.o build/obj/metal/MetalRenderBackend.o build/obj/metal/FrameArena.o build/obj/openfx/ofxsCore.o build/obj/openfx/ofxsImageEffect.o build/obj/openfx/ofxsInteract.o build/obj/openfx/ofxsLog.o build/obj/openfx/ofxsMultiThread.o build/obj/openfx/ofxsParams.o build/obj/openfx/ofxsProperty.o build/obj/openfx/ofxsPropertyValidation.o -o "build/CBEFFilmEffects.ofx.bundle/Contents/MacOS/CBEFFilmEffects.ofx" -bundle -arch arm64 -Wl,-dead_strip -framework Foundation -framework Metal
+cp vendor/openfx/THIRD_PARTY_NOTICES.md "build/CBEFFilmEffects.ofx.bundle/Contents/Resources/THIRD_PARTY_NOTICES.md"
+/usr/libexec/PlistBuddy -c 'Clear dict' "build/CBEFFilmEffects.ofx.bundle/Contents/Info.plist" 2>/dev/null || true
+printf '%s\n' '<?xml version="1.0" encoding="UTF-8"?>' \
+		'<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">' \
+		'<plist version="1.0"><dict>' \
+		'<key>CFBundleDevelopmentRegion</key><string>en</string>' \
+		'<key>CFBundleExecutable</key><string>CBEFFilmEffects.ofx</string>' \
+		'<key>CFBundleIdentifier</key><string>com.cbef.filmeffects</string>' \
+		'<key>CFBundleName</key><string>CBEF Film Effects</string>' \
+		'<key>CFBundlePackageType</key><string>BNDL</string>' \
+		'<key>CFBundleShortVersionString</key><string>1.0</string>' \
+		'<key>CFBundleVersion</key><string>1.0.0</string>' \
+		'</dict></plist>' > "build/CBEFFilmEffects.ofx.bundle/Contents/Info.plist"
+mkdir -p ".omo/evidence/m7-performance-20260812"
+CBEF_M7_EFFECT_FILTER=mist CBEF_M7_OUTPUT_DIR=".omo/evidence/m7-performance-20260812" CBEF_M7_BUNDLE="build/CBEFFilmEffects.ofx.bundle/Contents/MacOS/CBEFFilmEffects.ofx" "build/tests/m7_performance_benchmark"
+H2 evidence
+Wed Aug 12 07:08:24 UTC 2026
+16628  99.0  0.0 build/tests/grai build/tests/grain_v2_stock_cpu_contract
+16660  99.0  0.0 build/tests/grai build/tests/grain_v2_stock_cpu_contract
+16664   1.4  0.0 /bin/zsh         /bin/zsh -lc set -o pipefail; evidence='.omo/evidence/ticket11-mist-metal-final/ticket11-cleanup-validation.log'; { echo 'H2 evidence'; date -u; ps -Ao pid,pcpu,pmem,comm,args | rg 'build/tests/grain_v2_stock_cpu_contract|build/tests/m7_performance_benchmark' || true; ioreg -l -c IOAccelerator | rg 'PerformanceStatistics' -m 1 | cut -c1-300; } | tee -a "$evidence"
+16671   0.0  0.0 /bin/zsh         /bin/zsh -lc set -o pipefail; evidence='.omo/evidence/ticket11-mist-metal-final/ticket11-cleanup-validation.log'; { echo 'H2 evidence'; date -u; ps -Ao pid,pcpu,pmem,comm,args | rg 'build/tests/grain_v2_stock_cpu_contract|build/tests/m7_performance_benchmark' || true; ioreg -l -c IOAccelerator | rg 'PerformanceStatistics' -m 1 | cut -c1-300; } | tee -a "$evidence"
+16675   0.0  0.0 rg               rg build/tests/grain_v2_stock_cpu_contract|build/tests/m7_performance_benchmark
+    | |   |   |   "PerformanceStatistics" = {"In use system memory (driver)"=0,"Alloc system memory"=3990388736,"Tiler Utilization %"=28,"recoveryCount"=0,"lastRecoveryTime"=0,"Renderer Utilization %"=28,"TiledSceneBytes"=1146880,"Device Utilization %"=29,"SplitSceneCount"=0,"Allocated PB Size"=1253
+Wed Aug 12 07:10:37 UTC 2026
+COMMAND: DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer M7_OUTPUT_DIR=.omo/evidence/ticket11-mist-metal-final/cleanup-benchmark-clean make benchmark-mist
+CONTENTION CHECK:
+17207   0.0 /bin/zsh         /bin/zsh -lc set -o pipefail; evidence='.omo/evidence/ticket11-mist-metal-final/ticket11-cleanup-validation.log'; out='.omo/evidence/ticket11-mist-metal-final/cleanup-benchmark-clean'; { date -u; echo 'COMMAND: DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer M7_OUTPUT_DIR=.omo/evidence/ticket11-mist-metal-final/cleanup-benchmark-clean make benchmark-mist'; echo 'CONTENTION CHECK:'; ps -Ao pid,pcpu,comm,args | rg 'grain_v2_stock_cpu_contract|grain_v2_population_cpu_contract|m7_performance_benchmark' || true; DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer M7_OUTPUT_DIR="$out" make benchmark-mist; } 2>&1 | tee -a "$evidence"
+17214   0.0 /bin/zsh         /bin/zsh -lc set -o pipefail; evidence='.omo/evidence/ticket11-mist-metal-final/ticket11-cleanup-validation.log'; out='.omo/evidence/ticket11-mist-metal-final/cleanup-benchmark-clean'; { date -u; echo 'COMMAND: DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer M7_OUTPUT_DIR=.omo/evidence/ticket11-mist-metal-final/cleanup-benchmark-clean make benchmark-mist'; echo 'CONTENTION CHECK:'; ps -Ao pid,pcpu,comm,args | rg 'grain_v2_stock_cpu_contract|grain_v2_population_cpu_contract|m7_performance_benchmark' || true; DEVELOPER_DIR=/Applications/Xcode.app/Contents/Developer M7_OUTPUT_DIR="$out" make benchmark-mist; } 2>&1 | tee -a "$evidence"
+17218   0.0 rg               rg grain_v2_stock_cpu_contract|grain_v2_population_cpu_contract|m7_performance_benchmark
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/core/RenderCore.cpp" -o "build/obj/core/RenderCore.o"
+cp "build/CBEFFilmEffects.ofx.bundle/Contents/Resources/CBEFFilmEffects.metallib" "build/tests/CBEFFilmEffects.metallib"
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -DCBEF_ENABLE_METAL_TEST -Isrc/core "tests/m7_performance_benchmark.mm" "build/obj/core/RenderCore.o" "build/obj/metal/MetalRenderBackend.o" "build/obj/metal/FrameArena.o" \
+		-o "build/tests/m7_performance_benchmark" -framework Foundation -framework Metal
+xcrun clang++ build/obj/CBEFFilmEffects.o build/obj/core/RenderCore.o build/obj/metal/MetalRenderBackend.o build/obj/metal/FrameArena.o build/obj/openfx/ofxsCore.o build/obj/openfx/ofxsImageEffect.o build/obj/openfx/ofxsInteract.o build/obj/openfx/ofxsLog.o build/obj/openfx/ofxsMultiThread.o build/obj/openfx/ofxsParams.o build/obj/openfx/ofxsProperty.o build/obj/openfx/ofxsPropertyValidation.o -o "build/CBEFFilmEffects.ofx.bundle/Contents/MacOS/CBEFFilmEffects.ofx" -bundle -arch arm64 -Wl,-dead_strip -framework Foundation -framework Metal
+cp vendor/openfx/THIRD_PARTY_NOTICES.md "build/CBEFFilmEffects.ofx.bundle/Contents/Resources/THIRD_PARTY_NOTICES.md"
+/usr/libexec/PlistBuddy -c 'Clear dict' "build/CBEFFilmEffects.ofx.bundle/Contents/Info.plist" 2>/dev/null || true
+Initializing Plist...
+CBEF_M7_EFFECT_FILTER=mist CBEF_M7_OUTPUT_DIR=".omo/evidence/ticket11-mist-metal-final/cleanup-benchmark-clean" CBEF_M7_BUNDLE="build/CBEFFilmEffects.ofx.bundle/Contents/MacOS/CBEFFilmEffects.ofx" "build/tests/m7_performance_benchmark"
+m7: begin Mist Diffusion 1920x1080
+m7: begin Mist Diffusion 3840x2160
+m7_performance_benchmark: PASS
+JSON: .omo/evidence/ticket11-mist-metal-final/cleanup-benchmark-clean/m7-performance.json
+Markdown: .omo/evidence/ticket11-mist-metal-final/cleanup-benchmark-clean/m7-performance.md

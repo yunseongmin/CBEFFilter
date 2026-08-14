@@ -1,0 +1,10 @@
+#!/bin/sh
+set -eu
+
+target_volume=${3:-/}
+target_root=${target_volume%/}
+plugin_root="$target_root/Library/OFX/Plugins"
+backup_root="$target_root/Library/OFX/CBEFBackups"
+script_dir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd -P)
+
+exec "$script_dir/install-policy.sh" "$plugin_root" "$backup_root"

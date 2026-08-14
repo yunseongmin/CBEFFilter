@@ -1,0 +1,21 @@
+#!/bin/sh
+set -eu
+
+target_volume=${3:-/}
+target_root=${target_volume%/}
+installed="$target_root/Library/OFX/Plugins/CBEFFilmEffects.ofx.bundle"
+
+if [ ! -d "$installed" ]; then
+    echo "Installed CBEF Film Effects bundle was not found: $installed" >&2
+    exit 2
+fi
+
+/usr/bin/codesign --verify --deep --strict "$installed"
+installed_version=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleVersion' \
+    "$installed/Contents/Info.plist")
+if [ "$installed_version" != "2.0.0" ]; then
+    echo "Unexpected installed CBEF Film Effects version: $installed_version" >&2
+    exit 2
+fi
+
+echo "Verified CBEF Film Effects $installed_version at $installed"

@@ -1,0 +1,27 @@
+{
+  "crop": [
+    0,
+    0,
+    192,
+    128
+  ],
+  "fixture_id": "alpha-edge",
+  "regions": [
+    {
+      "cx": 96.0,
+      "cy": 64.0,
+      "id": "semi-transparent-circle",
+      "radius": 38.4,
+      "shape": "circle"
+    },
+    {
+      "height": 128,
+      "id": "transparent-checker",
+      "shape": "rect",
+      "width": 192,
+      "x": 0,
+      "y": 0
+    }
+  ],
+  "schema_version": "1.0"
+}

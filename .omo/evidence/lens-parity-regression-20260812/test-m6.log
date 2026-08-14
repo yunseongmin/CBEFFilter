@@ -1,0 +1,2 @@
+"build/tests/lens_reflections_render_contract"
+lens_reflections_render_contract: PASS (CPU + Metal M6 Lens Reflections)

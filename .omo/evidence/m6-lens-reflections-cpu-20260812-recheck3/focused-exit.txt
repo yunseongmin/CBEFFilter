@@ -1,0 +1,2 @@
+command=make -B test-m6-cpu
+exit_code=0

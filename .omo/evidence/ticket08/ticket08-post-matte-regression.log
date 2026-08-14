@@ -1,0 +1,10 @@
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -DCBEF_ENABLE_METAL_TEST -Isrc/core "tests/headless_render_contract.mm" "build/obj/core/RenderCore.o" "build/obj/metal/MetalRenderBackend.o" "build/obj/metal/FrameArena.o" \
+		-o "build/tests/headless_render_contract" -framework Foundation -framework Metal
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -DCBEF_ENABLE_METAL_TEST -Isrc/core "tests/halation_render_contract.mm" "build/obj/core/RenderCore.o" "build/obj/metal/MetalRenderBackend.o" "build/obj/metal/FrameArena.o" \
+		-o "build/tests/halation_render_contract" -framework Foundation -framework Metal
+"build/tests/typed_compile_contract"
+"build/tests/headless_render_contract"
+"build/tests/halation_render_contract"
+headless_render_contract: PASS (CPU + Metal M1 contract)
+"build/tests/inspector_metadata_contract"
+halation_render_contract: PASS (CPU + Metal M2 Halation)

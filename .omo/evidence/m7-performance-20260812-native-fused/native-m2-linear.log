@@ -1,0 +1,17 @@
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/metal/MetalRenderBackend.mm" -o "build/obj/metal/MetalRenderBackend.o"
+src/metal/MetalRenderBackend.mm:280:39: warning: string literal of length 87700 exceeds maximum length 65536 that C++ compilers are required to support [-Woverlength-strings]
+  280 | constexpr const char* kKernelSource = R"metal(
+      |                                       ^~~~~~~~
+src/metal/MetalRenderBackend.mm:2917:85: warning: missing field 'working_mode' initializer [-Wmissing-field-initializers]
+ 2917 |                                                {}, {}, {}, {}, {0.50F, 0.35F, 0.15F}};
+      |                                                                                     ^
+2 warnings generated.
+xcrun clang++ build/obj/CBEFFilmEffects.o build/obj/core/RenderCore.o build/obj/metal/MetalRenderBackend.o build/obj/openfx/ofxsCore.o build/obj/openfx/ofxsImageEffect.o build/obj/openfx/ofxsInteract.o build/obj/openfx/ofxsLog.o build/obj/openfx/ofxsMultiThread.o build/obj/openfx/ofxsParams.o build/obj/openfx/ofxsProperty.o build/obj/openfx/ofxsPropertyValidation.o -o "build/CBEFFilmEffects.ofx.bundle/Contents/MacOS/CBEFFilmEffects.ofx" -bundle -arch arm64 -Wl,-dead_strip -framework Foundation -framework Metal
+cp vendor/openfx/THIRD_PARTY_NOTICES.md "build/CBEFFilmEffects.ofx.bundle/Contents/Resources/THIRD_PARTY_NOTICES.md"
+/usr/libexec/PlistBuddy -c 'Clear dict' "build/CBEFFilmEffects.ofx.bundle/Contents/Info.plist" 2>/dev/null || true
+Initializing Plist...
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -DCBEF_ENABLE_METAL_TEST -Isrc/core "tests/halation_render_contract.mm" "build/obj/core/RenderCore.o" "build/obj/metal/MetalRenderBackend.o" \
+		-o "build/tests/halation_render_contract" -framework Foundation -framework Metal
+"build/tests/halation_render_contract"
+halation max pixel=-4,3 c=2 e=0.05 a=0.05\nhalation max pixel=39,28 c=0 e=0.0300287 a=0.030029\nhalation max pixel=40,28 c=0 e=0.030172 a=0.0301468\nhalation max pixel=40,29 c=0 e=0.033415 a=0.0329465\nhalation max pixel=43,29 c=0 e=0.0305732 a=0.0300848\nhalation max pixel=40,30 c=0 e=0.0556032 a=0.0525626\nhalation max pixel=43,30 c=0 e=0.0336177 a=0.0305272\nhalation max pixel=40,31 c=0 e=0.122021 a=0.116543\nhalation max pixel=43,31 c=0 e=0.0369563 a=0.0310103\nhalation max=0.00594604\nhalation_render_contract: CPU and Metal Halation must agree within 2e-4
+make: *** [test-m2] Error 1

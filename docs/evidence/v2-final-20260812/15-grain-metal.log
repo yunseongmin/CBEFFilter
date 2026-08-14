@@ -1,0 +1,2 @@
+atlas max=1.63466e-05 at (622,337) ch=2
+grain_v2_metal_ticket14: PASS (48-frame CPU/Metal; max_error=1.94907188e-05, mean_abs=3.72534133e-07)

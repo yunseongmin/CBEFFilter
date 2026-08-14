@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "generated_at_utc": "2026-08-12T05:25:29Z",
+  "os": "26.5.2",
+  "gpu": "Apple M3 Pro",
+  "bundle_path": "build/CBEFFilmEffects.ofx.bundle/Contents/MacOS/CBEFFilmEffects.ofx",
+  "bundle_hash_sha256": "198a68a0e5492ce1f334bdeb5f7bf584f39719e399caeb204e4adca1cf3b73a7",
+  "thresholds": {"1080p_ms": 41.67, "4k_ms": 83.33, "grain_4k_ms": 41.67, "temporary_bytes": 1073741824, "steady_delta_bytes": 8388608},
+  "cases": [
+    {"effect": "halation", "width": 1920, "height": 1080, "samples_ms": [19.0036, 18.6950, 18.9607, 18.9618, 18.8844, 19.2381, 19.2363, 19.7006, 19.3340, 19.7566], "frame_times": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "median_ms": 19.1200, "average_ms": 19.1771, "baseline_bytes": 66994176, "peak_bytes": 91717632, "steady_bytes": 91717632, "temporary_peak_bytes": 24723456, "steady_delta_bytes": 24723456, "threshold_ms": 41.6700, "timing_pass": true, "temporary_pass": true, "steady_pass": false, "pass": false},
+    {"effect": "film_grain", "width": 1920, "height": 1080, "samples_ms": [4.5072, 5.0366, 5.4899, 5.0362, 5.2352, 4.7515, 5.6385, 4.6718, 5.7078, 4.7589], "frame_times": [3, 4, 5, 6, 7, 8, 9, 10, 11, 12], "median_ms": 5.0364, "average_ms": 5.0834, "baseline_bytes": 91717632, "peak_bytes": 188399616, "steady_bytes": 188399616, "temporary_peak_bytes": 96681984, "steady_delta_bytes": 96681984, "threshold_ms": 41.6700, "timing_pass": true, "temporary_pass": true, "steady_pass": false, "pass": false},
+    {"effect": "optical_blur", "width": 1920, "height": 1080, "samples_ms": [3.1088, 3.3784, 2.8189, 3.3616, 3.0837, 2.9610, 3.1920, 3.3519, 3.1811, 2.9827], "frame_times": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "median_ms": 3.1450, "average_ms": 3.1420, "baseline_bytes": 188399616, "peak_bytes": 254754816, "steady_bytes": 254754816, "temporary_peak_bytes": 66355200, "steady_delta_bytes": 66355200, "threshold_ms": 41.6700, "timing_pass": true, "temporary_pass": true, "steady_pass": false, "pass": false},
+    {"effect": "lens_reflections", "width": 1920, "height": 1080, "samples_ms": [14.6388, 15.1343, 14.8252, 15.1728, 15.0888, 14.8972, 15.3844, 15.2071, 15.0525, 15.3503], "frame_times": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "median_ms": 15.1115, "average_ms": 15.0751, "baseline_bytes": 254754816, "peak_bytes": 354287616, "steady_bytes": 354287616, "temporary_peak_bytes": 99532800, "steady_delta_bytes": 99532800, "threshold_ms": 41.6700, "timing_pass": true, "temporary_pass": true, "steady_pass": false, "pass": false},
+    {"effect": "mist_diffusion", "width": 1920, "height": 1080, "samples_ms": [24.2715, 24.5343, 24.3269, 24.5900, 24.1635, 24.1688, 24.0298, 24.6165, 23.9867, 24.1428], "frame_times": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "median_ms": 24.2202, "average_ms": 24.2831, "baseline_bytes": 354287616, "peak_bytes": 354287616, "steady_bytes": 354287616, "temporary_peak_bytes": 0, "steady_delta_bytes": 0, "threshold_ms": 41.6700, "timing_pass": true, "temporary_pass": true, "steady_pass": true, "pass": true},
+    {"effect": "halation", "width": 3840, "height": 2160, "samples_ms": [], "frame_times": [], "median_ms": 0.0000, "average_ms": 0.0000, "baseline_bytes": 553484288, "peak_bytes": 603258880, "steady_bytes": 0, "temporary_peak_bytes": 0, "steady_delta_bytes": 0, "threshold_ms": 83.3300, "timing_pass": false, "temporary_pass": false, "steady_pass": false, "pass": false}
+  ],
+  "all_pass": false,
+  "error": "Halation 3840x2160: Metal output was non-finite or unchanged at sampled pixels"
+}

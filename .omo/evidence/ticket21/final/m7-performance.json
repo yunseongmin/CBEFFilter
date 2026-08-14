@@ -1,0 +1,15 @@
+{
+  "schema_version": 2,
+  "generated_at_utc": "2026-08-12T10:15:13Z",
+  "os": "26.5.2",
+  "gpu": "Apple M3 Pro",
+  "power_thermal_gpu_load": "unavailable",
+  "bundle_path": "build/CBEFFilmEffects.ofx.bundle/Contents/MacOS/CBEFFilmEffects.ofx",
+  "bundle_hash_sha256": "f3567a2e7bcd53ac0e7d77e430bcad2f098a2304cb90045068ea4081ad36c8e8",
+  "thresholds": {"1080p_ms": 41.67, "4k_ms": 83.33, "grain_4k_ms": 41.67, "temporary_bytes": 1073741824, "steady_delta_bytes": 8388608, "halation_scratch_bytes": 167772160, "mist_scratch_bytes": 230686720, "grain_scratch_bytes": 67108864, "optical_scratch_bytes": 201326592, "lens_scratch_bytes": 268435456},
+  "cases": [
+    {"effect": "lens_reflections", "width": 1920, "height": 1080, "samples_ms": [6.9471, 5.1771, 4.1995, 6.0451, 5.0384, 4.6308, 4.8753, 5.0629, 4.6833, 6.3020], "frame_times": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "median_ms": 5.0506, "average_ms": 5.2961, "initial_baseline_bytes": 66994176, "baseline_bytes": 102612992, "warmup_baseline_bytes": 102612992, "peak_bytes": 102612992, "steady_bytes": 102612992, "temporary_peak_bytes": 35618816, "steady_delta_bytes": 0, "scratch_requested_peak": 35618816, "scratch_reserved_peak": 35618816, "arena_growth_after_warmup": 0, "threshold_ms": 41.6700, "timing_pass": true, "temporary_pass": true, "steady_pass": true, "pass": true},
+    {"effect": "lens_reflections", "width": 3840, "height": 2160, "samples_ms": [14.6900, 14.0906, 13.8912, 14.2576, 12.7442, 12.2640, 13.7511, 13.2141, 13.3560, 13.3905], "frame_times": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "median_ms": 13.5708, "average_ms": 13.5649, "initial_baseline_bytes": 301809664, "baseline_bytes": 443088896, "warmup_baseline_bytes": 443088896, "peak_bytes": 443088896, "steady_bytes": 443088896, "temporary_peak_bytes": 141279232, "steady_delta_bytes": 0, "scratch_requested_peak": 141279232, "scratch_reserved_peak": 141279232, "arena_growth_after_warmup": 0, "threshold_ms": 83.3300, "timing_pass": true, "temporary_pass": true, "steady_pass": true, "pass": true}
+  ],
+  "all_pass": true
+}

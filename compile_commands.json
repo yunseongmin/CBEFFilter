@@ -1,0 +1,82 @@
+[
+  {
+    "directory": "/Users/younseongmin/Documents/CBEF/CBEFFilter",
+    "arguments": [
+      "xcrun",
+      "clang++",
+      "-std=c++17",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Wpedantic",
+      "-arch",
+      "arm64",
+      "-Iinclude",
+      "-Isrc/core",
+      "-c",
+      "src/core/RenderCore.cpp"
+    ],
+    "file": "/Users/younseongmin/Documents/CBEF/CBEFFilter/src/core/RenderCore.cpp"
+  },
+  {
+    "directory": "/Users/younseongmin/Documents/CBEF/CBEFFilter",
+    "arguments": [
+      "xcrun",
+      "clang++",
+      "-std=c++17",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Wpedantic",
+      "-fvisibility=hidden",
+      "-arch",
+      "arm64",
+      "-Iinclude",
+      "-Isrc/core",
+      "-c",
+      "src/metal/MetalRenderBackend.mm"
+    ],
+    "file": "/Users/younseongmin/Documents/CBEF/CBEFFilter/src/metal/MetalRenderBackend.mm"
+  },
+  {
+    "directory": "/Users/younseongmin/Documents/CBEF/CBEFFilter",
+    "arguments": [
+      "xcrun",
+      "clang++",
+      "-std=c++17",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Wpedantic",
+      "-fvisibility=hidden",
+      "-arch",
+      "arm64",
+      "-Iinclude",
+      "-I/Library/Application Support/Blackmagic Design/DaVinci Resolve/Developer/OpenFX/OpenFX-1.4/include",
+      "-I/Library/Application Support/Blackmagic Design/DaVinci Resolve/Developer/OpenFX/Support/include",
+      "-c",
+      "src/ofx/CBEFFilmEffects.cpp"
+    ],
+    "file": "/Users/younseongmin/Documents/CBEF/CBEFFilter/src/ofx/CBEFFilmEffects.cpp"
+  },
+  {
+    "directory": "/Users/younseongmin/Documents/CBEF/CBEFFilter",
+    "arguments": [
+      "xcrun",
+      "clang++",
+      "-std=c++17",
+      "-O2",
+      "-Wall",
+      "-Wextra",
+      "-Wpedantic",
+      "-arch",
+      "arm64",
+      "-DCBEF_ENABLE_METAL_TEST",
+      "-Iinclude",
+      "-Isrc/core",
+      "-c",
+      "tests/headless_render_contract.mm"
+    ],
+    "file": "/Users/younseongmin/Documents/CBEF/CBEFFilter/tests/headless_render_contract.mm"
+  }
+]

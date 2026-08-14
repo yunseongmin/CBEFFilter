@@ -1,0 +1,2 @@
+"build/tests/plugin_abi_probe" "build/CBEFFilmEffects.ofx.bundle/Contents/MacOS/CBEFFilmEffects.ofx"
+plugin_abi_probe: PASS (five stable OpenFX effect descriptors + bundled Metal library)

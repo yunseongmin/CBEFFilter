@@ -1,0 +1,25 @@
+xcrun clang++ -Iinclude -Ibuild/openfx-sdk/OpenFX-1.4/include -Ibuild/openfx-sdk/Support/include -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -c "src/ofx/CBEFFilmEffects.cpp" -o "build/obj/CBEFFilmEffects.o"
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/core/RenderCore.cpp" -o "build/obj/core/RenderCore.o"
+xcrun clang++ -Iinclude -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -Isrc/core -c "src/metal/MetalRenderBackend.mm" -o "build/obj/metal/MetalRenderBackend.o"
+xcrun clang++ -Iinclude -Ibuild/openfx-sdk/OpenFX-1.4/include -Ibuild/openfx-sdk/Support/include -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -w -c "build/openfx-sdk/Support/Library/ofxsCore.cpp" -o "build/obj/openfx/ofxsCore.o"
+xcrun clang++ -Iinclude -Ibuild/openfx-sdk/OpenFX-1.4/include -Ibuild/openfx-sdk/Support/include -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -w -c "build/openfx-sdk/Support/Library/ofxsImageEffect.cpp" -o "build/obj/openfx/ofxsImageEffect.o"
+xcrun clang++ -Iinclude -Ibuild/openfx-sdk/OpenFX-1.4/include -Ibuild/openfx-sdk/Support/include -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -w -c "build/openfx-sdk/Support/Library/ofxsInteract.cpp" -o "build/obj/openfx/ofxsInteract.o"
+xcrun clang++ -Iinclude -Ibuild/openfx-sdk/OpenFX-1.4/include -Ibuild/openfx-sdk/Support/include -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -w -c "build/openfx-sdk/Support/Library/ofxsLog.cpp" -o "build/obj/openfx/ofxsLog.o"
+xcrun clang++ -Iinclude -Ibuild/openfx-sdk/OpenFX-1.4/include -Ibuild/openfx-sdk/Support/include -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -w -c "build/openfx-sdk/Support/Library/ofxsMultiThread.cpp" -o "build/obj/openfx/ofxsMultiThread.o"
+xcrun clang++ -Iinclude -Ibuild/openfx-sdk/OpenFX-1.4/include -Ibuild/openfx-sdk/Support/include -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -w -c "build/openfx-sdk/Support/Library/ofxsParams.cpp" -o "build/obj/openfx/ofxsParams.o"
+xcrun clang++ -Iinclude -Ibuild/openfx-sdk/OpenFX-1.4/include -Ibuild/openfx-sdk/Support/include -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -w -c "build/openfx-sdk/Support/Library/ofxsProperty.cpp" -o "build/obj/openfx/ofxsProperty.o"
+xcrun clang++ -Iinclude -Ibuild/openfx-sdk/OpenFX-1.4/include -Ibuild/openfx-sdk/Support/include -std=c++17 -O2 -Wall -Wextra -Wpedantic -fvisibility=hidden -arch arm64 -w -c "build/openfx-sdk/Support/Library/ofxsPropertyValidation.cpp" -o "build/obj/openfx/ofxsPropertyValidation.o"
+xcrun -sdk macosx metal -c "src/metal/kernels/CBEFFilmEffects.metal" -o "build/obj/metal/CBEFFilmEffects.air"
+src/metal/kernels/CBEFFilmEffects.metal:602:16: error: automatic variable qualified with an address space
+constant float mist_energy_factors[4] = {0.25f, 0.50f, 0.75f, 1.0f};
+               ^
+src/metal/kernels/CBEFFilmEffects.metal:604:1: error: expected expression
+kernel void cbef_mist_copy(const device uint* source [[buffer(0)]], device uint* destination [[buffer(1)]],
+^
+src/metal/kernels/CBEFFilmEffects.metal:1607:1: error: expected '}'
+^
+src/metal/kernels/CBEFFilmEffects.metal:538:74: note: to match this '{'
+                             uint2 position [[thread_position_in_grid]]) {
+                                                                         ^
+3 errors generated.
+make: *** [build/CBEFFilmEffects.ofx.bundle/Contents/Resources/CBEFFilmEffects.metallib] Error 1

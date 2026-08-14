@@ -1,0 +1,4 @@
+scenario=halation_render_contract-cpu-build-and-run
+build_exit=0
+halation_render_contract: PASS (CPU + Metal M2 Halation)
+run_exit=0
